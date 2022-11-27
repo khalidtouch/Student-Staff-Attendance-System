@@ -1,8 +1,6 @@
 package com.andela.eduteam14.android_app.core.data.mock
 
-import com.andela.eduteam14.android_app.core.data.models.LocalAttendanceHistory
 import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
-import java.util.UUID
 
 class AttendanceDataSource {
 

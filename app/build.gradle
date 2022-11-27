@@ -64,6 +64,12 @@ dependencies {
     //firebase
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
     //This adds the viewPager circle
     implementation 'me.relex:circleindicator:2.1.6'
 

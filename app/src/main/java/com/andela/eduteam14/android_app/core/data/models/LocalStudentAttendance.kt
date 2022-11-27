@@ -10,6 +10,7 @@ data class LocalStudentAttendance(
     val femalesPresent: Long,
     val schoolName: String,
     val dateModified: String,
+    val className: String,
 
     ) {
     companion object {
@@ -20,7 +21,8 @@ data class LocalStudentAttendance(
             malesPresent = 2027,
             femalesPresent = 3992,
             schoolName = "Maryland International College",
-            dateModified = "March 13, 2022"
+            dateModified = "March 13, 2022",
+            className = "Grade 1"
         )
     }
 
