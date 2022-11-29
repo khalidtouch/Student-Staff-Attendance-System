@@ -8,25 +8,33 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.andela.eduteam14.android_app.R
+import com.andela.eduteam14.android_app.core.ui.extensions.onClick
+import com.andela.eduteam14.android_app.databinding.FragmentFirstScreenBinding
+import com.andela.eduteam14.android_app.databinding.FragmentOnboardingBinding
 
 class FirstScreenFragment : Fragment() {
 
+    private lateinit var next: TextView
+    private var _binding: FragmentFirstScreenBinding? = null
 
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_first_screen, container, false)
+        _binding = FragmentFirstScreenBinding.inflate(inflater, container, false)
 
-        val viewPager = activity?.findViewById<ViewPager2>(R.id.myviewPager)
+        return binding?.root
+    }
 
-        view.findViewById<TextView>(R.id.next).setOnClickListener {
-            viewPager?.currentItem = 1
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        return view
+        next = binding?.next!!
+        next.onClick {  }
+
     }
 
 }

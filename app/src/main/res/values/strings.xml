@@ -9,7 +9,7 @@
     and insight into staff and student performance data</string>
     <string name="frag_screen_text_three"> We got you covered for easy access to data
     for making your next decision</string>
-    <string name="next">Next</string>
+    <string name="next">Swipe for next</string>
     <string name="continue_text">Continue</string>
     <string name="edu14">Edu14</string>
 
@@ -101,7 +101,7 @@
     <string name="female_staff">Female Staff</string>
     <string name="hint_male_staff">Male Staff</string>
     <string name="grade">Grade 10</string>
-    <string name="finish">Finish</string>
+    <string name="finish">Click to finish</string>
     <string name="add_your_organization">Add your Organization</string>
     <string name="Hint_organization_name">Organization Name</string>
     <string name="hint_address">Address</string>

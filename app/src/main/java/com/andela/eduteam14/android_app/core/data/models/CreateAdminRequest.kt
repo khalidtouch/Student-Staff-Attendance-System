@@ -2,16 +2,16 @@ package com.andela.eduteam14.android_app.core.data.models
 
 
 data class CreateAdminRequest(
-    val AdminId: String = "",
-    val AdminName: String = "",
-    val AdminEmail: String = "",
-    val Password: String = "",
-    val ConfirmPassword: String = "",
+    var AdminId: String = "",
+    var AdminName: String = "",
+    var AdminEmail: String = "",
+    var Password: String = "",
+    var ConfirmPassword: String = "",
 ) {
     fun isValid(): Boolean {
-        val invalid = AdminName.isEmpty() || AdminEmail.isEmpty()
+        val invalid = AdminEmail.isEmpty() || Password.isEmpty() || Password != ConfirmPassword
 
-        return !invalid && passwordValid
+        return !invalid
     }
 
     fun toModel(): LocalAdmin {
@@ -20,5 +20,4 @@ data class CreateAdminRequest(
         )
     }
 
-    private val passwordValid = Password == ConfirmPassword
 }

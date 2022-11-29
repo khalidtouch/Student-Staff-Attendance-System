@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.auth.AuthActivity
 import com.andela.eduteam14.android_app.core.ui.extensions.goto
@@ -17,6 +18,7 @@ class SplashActivity : AppCompatActivity(), UiAction {
 
     private var binding: ActivitySplashBinding? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
@@ -25,7 +27,7 @@ class SplashActivity : AppCompatActivity(), UiAction {
         initViews()
 
         Handler(Looper.getMainLooper()).postDelayed({
-           goto(AuthActivity::class.java)
+            goto(AuthActivity::class.java)
         }, 2000)
     }
 
@@ -38,7 +40,7 @@ class SplashActivity : AppCompatActivity(), UiAction {
     }
 
     override fun onDestroy() {
-       onDestroyComponents()
+        onDestroyComponents()
         super.onDestroy()
     }
 }

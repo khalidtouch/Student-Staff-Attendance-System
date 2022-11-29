@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "53913240591-3g8rsjfk7dc59gqidhl32o6djinrqmdd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andela.eduteam14.android_app",
+            "certificate_hash": "45e93d38748ad0914ed74e815e2e66d30ffaf597"
+          }
+        },
+        {
           "client_id": "53913240591-snj4dms21l8hk6jc3rpett9sruc508nb.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,5 +1,6 @@
 package com.andela.eduteam14.android_app.core.data.firebase.manager.firestore
 
+import android.util.Log
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteAdmin
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteDailyAttendance
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteOrganization
@@ -23,7 +24,7 @@ class FireStoreManagerImpl(
         fireStore.collection(REF_SCHOOLS).document(school.SchoolCode)
             .set(school)
             .addOnSuccessListener { onResult(true) }
-            .addOnFailureListener { onResult(true) }
+            .addOnFailureListener { onResult(false) }
     }
 
     override fun createOrganization(
@@ -63,6 +64,23 @@ class FireStoreManagerImpl(
     }
 
     override fun findAllSchools(onResult: (List<RemoteSchool>) -> Unit) {
+        //real-time with paging
+
+        val first = fireStore.collection(REF_SCHOOLS)
+            .orderBy("SchoolName")
+            .limit(25)
+
+        first.get()
+            .addOnSuccessListener { snapShots ->
+                val lastVisible = snapShots.documents[snapShots.size() - 1]
+
+                val next = fireStore.collection(REF_SCHOOLS)
+                    .orderBy("SchoolName")
+                    .startAfter(lastVisible)
+                    .limit(25)
+
+                onResult(nex)
+            }
 
     }
 
@@ -90,7 +108,20 @@ class FireStoreManagerImpl(
     }
 
     override fun findAllAttendance(onResult: (List<RemoteDailyAttendance>) -> Unit) {
-        //real-time
+        //real-time with paging
+        val first = fireStore.collection(REF_ATTENDANCE)
+            .orderBy("DateModified")
+            .limit(25)
+
+       first.get()
+            .addOnSuccessListener { snapShots ->
+                val lastVisible = snapShots.documents[snapShots.size() - 1]
+
+                val next = fireStore.collection(REF_ATTENDANCE)
+                    .orderBy("DateModified")
+                    .startAfter(lastVisible)
+                    .limit(25)
+            }
 
     }
 
@@ -123,5 +154,6 @@ class FireStoreManagerImpl(
         const val REF_ORGANIZATIONS = "organizations"
         const val REF_SCHOOLS = "schools"
         const val REF_ATTENDANCE = "attendance"
+        const val TAG = "FireStoreManagerImpl"
     }
 }

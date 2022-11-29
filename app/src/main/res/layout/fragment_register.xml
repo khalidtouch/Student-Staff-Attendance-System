@@ -68,6 +68,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/TextAppearance.AppCompat.Medium"
+            android:id="@+id/RegisterFragmentEmailLayoutEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
@@ -100,6 +101,7 @@
         <com.google.android.material.textfield.TextInputEditText
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
+            android:id="@+id/RegisterFragmentPasswordLayoutEdit"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:inputType="textPassword"
@@ -131,6 +133,7 @@
         <com.google.android.material.textfield.TextInputEditText
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
+            android:id="@+id/RegisterFragmentConfirmPasswordLayoutEdit"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:inputType="textPassword"

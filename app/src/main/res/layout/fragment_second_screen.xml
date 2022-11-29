@@ -21,11 +21,11 @@
 
     <TextView
         android:id="@+id/title2"
-        android:layout_width="376dp"
-        android:layout_height="74dp"
-        android:layout_marginLeft="25dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/frag_screen_title_two"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -36,27 +36,30 @@
 
     <TextView
         android:id="@+id/description2"
-        android:layout_width="388dp"
-        android:layout_height="49dp"
-        android:layout_marginLeft="25dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginRight="25dp"
-        android:gravity="center"
+        android:layout_marginEnd="16dp"
         android:text="@string/frag_screen_text_two"
-        android:textAlignment="viewStart"
+        android:textAlignment="textStart"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title2" />
 
     <TextView
         android:id="@+id/next2"
-        android:layout_width="25dp"
-        android:layout_height="15dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Next"
+        android:text="@string/next"
+        android:padding="8dp"
+        android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description2" />
 

@@ -1,8 +1,10 @@
 package com.andela.eduteam14.android_app.core.data.models
 
 data class LoginAdminRequest(
-    val AdminEmail: String ="",
-    val Password: String= "",
+    var AdminEmail: String ="",
+    var Password: String= "",
 ) {
-
+    fun isValid(): Boolean {
+        return AdminEmail.isNotEmpty() && Password.isNotEmpty()
+    }
 }

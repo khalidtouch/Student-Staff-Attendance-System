@@ -56,4 +56,12 @@
         android:id="@+id/joinOrganizationFragment"
         android:name="com.andela.eduteam14.android_app.core.ui.joinorganization.JoinOrganizationFragment"
         android:label="JoinOrganizationFragment" />
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.andela.eduteam14.android_app.core.ui.onboarding.screens.OnBoardingFragment"
+        android:label="OnBoardingFragment" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
 </navigation>

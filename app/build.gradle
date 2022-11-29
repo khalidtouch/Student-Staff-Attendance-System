@@ -33,7 +33,7 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
         viewBinding = true
     }
@@ -60,19 +60,18 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
     //This is needed for viewPager 2
-    implementation"androidx.viewpager2:viewpager2:1.0.0"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
 
     //firebase
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    implementation 'com.google.firebase:firebase-database'
-    implementation 'com.google.firebase:firebase-database-ktx'
 
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-firestore'
 
     //This adds the viewPager circle
     implementation 'me.relex:circleindicator:2.1.6'
