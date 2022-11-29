@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,8 @@ class HomeSchoolFragment : Fragment(), UiAction {
     private var _binding: FragmentHomeSchoolBinding? = null
 
     private val binding get() = _binding
+
+    private lateinit var noDataLayout : LinearLayout
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var homeAdapter: SchoolHomeAdapter
@@ -56,7 +59,7 @@ class HomeSchoolFragment : Fragment(), UiAction {
 
         (activity as SchoolBaseActivity).hideFab()
 
-        homeAdapter = SchoolHomeAdapter(requireContext(), registry)
+        homeAdapter = SchoolHomeAdapter( registry)
 
 
         recyclerView.apply {
@@ -64,13 +67,19 @@ class HomeSchoolFragment : Fragment(), UiAction {
             adapter = homeAdapter
         }
 
-        homeAdapter.submitList(viewModel.entries)
+        if(viewModel.entries.isEmpty()) {
+           hideData()
+        } else {
+            homeAdapter.submitList(viewModel.entries)
+            showData()
+        }
 
     }
 
 
     override fun initViews() {
         recyclerView = binding?.SchoolHomeRecyclerView!!
+        noDataLayout = binding?.LayoutEmptyData!!
     }
 
     override fun onDestroyComponents() {
@@ -80,5 +89,15 @@ class HomeSchoolFragment : Fragment(), UiAction {
     override fun onDestroy() {
         onDestroyComponents()
         super.onDestroy()
+    }
+
+    private fun showData() {
+        noDataLayout.visibility = View.INVISIBLE
+        recyclerView.visibility = View.VISIBLE
+    }
+
+    private fun hideData() {
+        noDataLayout.visibility = View.VISIBLE
+        recyclerView.visibility = View.INVISIBLE
     }
 }

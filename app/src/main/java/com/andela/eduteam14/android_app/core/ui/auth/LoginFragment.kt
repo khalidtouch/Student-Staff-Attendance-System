@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,11 +18,15 @@ import com.andela.eduteam14.android_app.core.ui.extensions.ShowToast
 import com.andela.eduteam14.android_app.core.ui.extensions.goto
 import com.andela.eduteam14.android_app.core.ui.extensions.onClick
 import com.andela.eduteam14.android_app.core.ui.extensions.onLongClick
+import com.andela.eduteam14.android_app.core.ui.extensions.snackBar
 import com.andela.eduteam14.android_app.databinding.FragmentLoginBinding
 import com.andela.eduteam14.android_app.databinding.FragmentRegisterBinding
 
 class LoginFragment : Fragment(), UiAction {
 
+    private lateinit var googleLogo: ImageView
+    private lateinit var githubLogo: ImageView
+    private lateinit var fbLogo: ImageView
     private var _binding: FragmentLoginBinding? = null
 
     private val binding get() = _binding
@@ -50,11 +55,29 @@ class LoginFragment : Fragment(), UiAction {
             (activity as AuthActivity).goto(SchoolBaseActivity::class.java)
         }
 
+        onLogin()
+    }
+
+    private fun onLogin() {
+        githubLogo.onClick {
+            snackBar(binding?.root as View, getString(R.string.not_yet_implemented))
+        }
+
+        fbLogo.onClick {
+            snackBar(binding?.root as View, getString(R.string.not_yet_implemented))
+        }
+
+        googleLogo.onClick {
+            snackBar(binding?.root as View, getString(R.string.not_yet_implemented))
+        }
     }
 
     override fun initViews() {
         login = binding?.LoginFragmentLoginBtn!!
         registerInstead = binding?.NewUser!!
+        googleLogo = binding?.LoginFragmentGoogleIcon!!
+        githubLogo = binding?.LoginFragmentGithubIcon!!
+        fbLogo = binding?.LoginFragmentFacebookIcon!!
     }
 
     override fun onDestroyComponents() {

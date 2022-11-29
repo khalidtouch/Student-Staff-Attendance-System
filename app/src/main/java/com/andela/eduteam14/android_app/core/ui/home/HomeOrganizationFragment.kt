@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.andela.eduteam14.android_app.databinding.FragmentHomeSchoolBinding
 
 class HomeOrganizationFragment : Fragment(), UiAction {
 
+    private lateinit var noDataLayout: LinearLayout
     private var _binding: FragmentHomeOrganizationBinding? = null
     private val binding get() = _binding
 
@@ -32,6 +34,7 @@ class HomeOrganizationFragment : Fragment(), UiAction {
             (activity as OrganizationBaseActivity).coreComponent.dataSource,
         )
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +50,7 @@ class HomeOrganizationFragment : Fragment(), UiAction {
         initViews()
 
 
-        organizationAdapter = OrganizationHomeAdapter(requireContext(), viewModel.attendanceRegistry)
+        organizationAdapter = OrganizationHomeAdapter(viewModel.attendanceRegistry)
 
 
         recyclerView.apply {
@@ -55,15 +58,31 @@ class HomeOrganizationFragment : Fragment(), UiAction {
             adapter = organizationAdapter
         }
 
-        organizationAdapter.submitList(viewModel.entries)
+        if (viewModel.entries.isEmpty()) hideData() else {
+            organizationAdapter.submitList(viewModel.entries)
+            showData()
+        }
+
 
     }
+
     override fun initViews() {
         recyclerView = binding?.OrganizationHomeRecyclerView!!
+        noDataLayout = binding?.LayoutEmptyData!!
     }
 
     override fun onDestroyComponents() {
-       _binding = null
+        _binding = null
+    }
+
+    private fun showData() {
+        noDataLayout.visibility = View.INVISIBLE
+        recyclerView.visibility = View.VISIBLE
+    }
+
+    private fun hideData() {
+        noDataLayout.visibility = View.VISIBLE
+        recyclerView.visibility = View.INVISIBLE
     }
 
 

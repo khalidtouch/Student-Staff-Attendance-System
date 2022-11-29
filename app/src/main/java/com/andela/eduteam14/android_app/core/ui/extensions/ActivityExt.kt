@@ -3,9 +3,11 @@ package com.andela.eduteam14.android_app.core.ui.extensions
 import android.content.Context
 import android.content.Intent
 import android.os.Parcelable
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.andela.eduteam14.android_app.R
+import com.google.android.material.snackbar.Snackbar
 import java.io.Serializable
 
 fun AppCompatActivity.goto(
@@ -100,4 +102,8 @@ fun ShowToast(context: Context) {
         Toast.LENGTH_SHORT
     )
         .show()
+}
+
+fun snackBar(view: View, message: String) {
+    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 }

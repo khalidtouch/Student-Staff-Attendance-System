@@ -133,4 +133,5 @@
     <string name="org_location">Lagos, Nigeria</string>
     <string name="org_name">Temporary Org name</string>
     <string name="previous">Previous</string>
+    <string name="story_no_data">No attendance information now</string>
 </resources>

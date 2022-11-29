@@ -64,7 +64,7 @@ class AttendanceSchoolFragment : Fragment(), UiAction {
 
         (activity as SchoolBaseActivity).showFab()
 
-        homeAdapter = SchoolHomeAdapter(requireContext(), registry)
+        homeAdapter = SchoolHomeAdapter(registry)
 
 
         recyclerView.apply {

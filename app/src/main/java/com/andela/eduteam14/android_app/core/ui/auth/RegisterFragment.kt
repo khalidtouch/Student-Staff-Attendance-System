@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -15,10 +16,14 @@ import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.extensions.goto
 import com.andela.eduteam14.android_app.core.ui.extensions.onClick
+import com.andela.eduteam14.android_app.core.ui.extensions.snackBar
 import com.andela.eduteam14.android_app.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment(), UiAction {
 
+    private lateinit var googleLogo: ImageView
+    private lateinit var fbLogo: ImageView
+    private lateinit var githubLogo: ImageView
     private lateinit var createAccountBtn: Button
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding
@@ -51,7 +56,24 @@ class RegisterFragment : Fragment(), UiAction {
         login.onClick {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
+
+        onRegister()
     }
+
+    private fun onRegister() {
+        githubLogo.onClick {
+            snackBar(binding?.root as View, getString(R.string.not_yet_implemented))
+        }
+
+        fbLogo.onClick {
+            snackBar(binding?.root as View, getString(R.string.not_yet_implemented))
+        }
+
+        googleLogo.onClick {
+            snackBar(binding?.root as View, getString(R.string.not_yet_implemented))
+        }
+    }
+
 
     private fun loadDialog() {
        dialogUseCase(
@@ -69,6 +91,9 @@ class RegisterFragment : Fragment(), UiAction {
     override fun initViews() {
         createAccountBtn = binding?.RegisterFragmentRegisterBtn!!
         login = binding?.OldUser!!
+        githubLogo = binding?.RegisterFragmentGithubIcon!!
+        fbLogo = binding?.RegisterFragmentFacebookIcon!!
+        googleLogo = binding?.RegisterFragmentGoogleIcon!!
     }
 
     override fun onDestroyComponents() {

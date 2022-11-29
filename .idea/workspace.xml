@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2aa46ee-d165-4b9c-9e55-b7c3211582a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/manager/authentication/FirebaseAuthenticationManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/manager/authentication/FirebaseAuthenticationManagerImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/manager/database/FirebaseDatabaseManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/manager/database/FirebaseDatabaseManagerImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/RemoteAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/RemoteDailyAttendance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/RemoteOrganizationReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/CreateAdminRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/CreateOrganizationRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/CreateSchoolRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LocalOrganization.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LocalSchool.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LoginAdminRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/empty_cart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/empty_cart.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/Firebase.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/DailyAttendance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/Organization.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/RemoteOrganization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/OrganizationReport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/RemoteSchool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/RemoteOrganization.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/firebase/models/RemoteOrganization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/mock/AttendanceDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/mock/AttendanceDataSource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LocalAttendanceHistory.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LocalDailyAttendance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LocalDailyAttendance.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LocalStudentAttendance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LocalStudentAttendance.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/Models.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/data/models/LocalAdmin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/di/CoreComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/di/CoreComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/attendance/AttendanceOrganizationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/attendance/AttendanceOrganizationFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/attendance/AttendanceSchoolFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/attendance/AttendanceSchoolFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/auth/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/auth/LoginFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/auth/RegisterFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/auth/RegisterFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/extensions/ActivityExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/extensions/ActivityExt.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/history/HistoryOrganizationAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/history/HistoryOrganizationAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/history/HistoryOrganizationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/history/HistoryOrganizationFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/history/HistorySchoolAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/history/HistorySchoolAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/history/HistorySchoolFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/history/HistorySchoolFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/home/HomeOrganizationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/home/HomeOrganizationFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/home/HomeSchoolFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/home/HomeSchoolFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/home/OrganizationHomeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/home/OrganizationHomeAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/home/SchoolHomeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/andela/eduteam14/android_app/core/ui/home/SchoolHomeAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history_organization.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history_organization.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history_school.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history_school.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_organization.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_organization.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_school.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_school.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,14 +66,40 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2IChLtM5kfR0Z2UHawCR5na5cFU" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "memory.settings.postsync.last.time.stamp": "1669518739343"
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_directory_selection": "/home/khalid/AndroidStudioProjects/Student-Staff-Attendance-System/app/src/main/res/drawable-v24",
+    "last_opened_file_path": "/home/khalid/AndroidStudioProjects/Student-Staff-Attendance-System/app/src/main/res/drawable-v24",
+    "memory.settings.postsync.last.time.stamp": "1669689329482",
+    "project.structure.last.edited": "Dependencies",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android_app.app.main" />
@@ -128,7 +160,15 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f2aa46ee-d165-4b9c-9e55-b7c3211582a5" name="Changes" comment="" />
+      <created>1669691420331</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669691420331</updated>
+    </task>
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

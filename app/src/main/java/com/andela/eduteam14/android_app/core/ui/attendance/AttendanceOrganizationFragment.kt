@@ -47,7 +47,7 @@ class AttendanceOrganizationFragment : Fragment(), UiAction {
         initViews()
 
 
-        organizationAdapter = OrganizationHomeAdapter(requireContext(), viewModel.attendanceRegistry)
+        organizationAdapter = OrganizationHomeAdapter( viewModel.attendanceRegistry)
 
 
         recyclerView.apply {

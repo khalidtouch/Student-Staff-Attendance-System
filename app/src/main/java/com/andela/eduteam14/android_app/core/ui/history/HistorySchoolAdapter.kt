@@ -5,35 +5,35 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
 import com.andela.eduteam14.android_app.databinding.AttendanceHistoryItemBinding
 
 class HistorySchoolAdapter :
-    ListAdapter<LocalAttendanceHistory, HistorySchoolAdapter.ViewHolder>(DiffUtilCallback()) {
+    ListAdapter<LocalDailyAttendance, HistorySchoolAdapter.ViewHolder>(DiffUtilCallback()) {
 
     inner class ViewHolder(private val itemBinding: AttendanceHistoryItemBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(history: LocalAttendanceHistory) {
+        fun bind(history: LocalDailyAttendance) {
             itemBinding.apply {
-                HistorySchoolName.text = history.schoolName
-                HistoryState.text = history.status
-                HistoryDate.text = history.date
+                HistorySchoolName.text = history.SchoolName
+                HistoryDate.text = history.DateModified
             }
         }
     }
 
-    private class DiffUtilCallback : DiffUtil.ItemCallback<LocalAttendanceHistory>() {
+    private class DiffUtilCallback : DiffUtil.ItemCallback<LocalDailyAttendance>() {
         override fun areItemsTheSame(
-            oldItem: LocalAttendanceHistory,
-            newItem: LocalAttendanceHistory
+            oldItem: LocalDailyAttendance,
+            newItem: LocalDailyAttendance
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: LocalAttendanceHistory,
-            newItem: LocalAttendanceHistory
+            oldItem: LocalDailyAttendance,
+            newItem: LocalDailyAttendance
         ): Boolean {
-            return oldItem.historyId == newItem.historyId
+            return oldItem.AttendanceId == newItem.AttendanceId
         }
 
     }

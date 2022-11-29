@@ -60,6 +60,7 @@ public class RemoteOrganization {
 
     public LocalOrganization mapToLocal() {
         return new LocalOrganization(
+                OrganizationId,
                 Name,
                 Location,
                 Address,

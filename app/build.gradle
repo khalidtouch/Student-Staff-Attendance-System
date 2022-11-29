@@ -52,6 +52,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
     implementation 'com.android.car.ui:car-ui-lib:2.0.0'
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
@@ -69,6 +71,8 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
     //This adds the viewPager circle
     implementation 'me.relex:circleindicator:2.1.6'

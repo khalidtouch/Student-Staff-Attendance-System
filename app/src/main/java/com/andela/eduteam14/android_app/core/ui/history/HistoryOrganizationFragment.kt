@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ import com.andela.eduteam14.android_app.databinding.FragmentHistorySchoolBinding
 
 class HistoryOrganizationFragment : Fragment(), UiAction {
 
+    private lateinit var noDataLayout: LinearLayout
     private var _binding: FragmentHistoryOrganizationBinding? = null
 
     private val binding get() = _binding
@@ -65,17 +67,32 @@ class HistoryOrganizationFragment : Fragment(), UiAction {
             adapter = historyAdapter
         }
 
-        historyAdapter.submitList(viewModel.history)
+        if(viewModel.entries.isEmpty()) hideData() else {
+            historyAdapter.submitList(viewModel.history)
+            showData()
+        }
+
 
     }
 
 
     override fun initViews() {
         recyclerView = binding?.HistoryOrganizationRecyclerView!!
+        noDataLayout = binding?.LayoutEmptyData!!
     }
 
     override fun onDestroyComponents() {
         _binding = null
+    }
+
+    private fun showData() {
+        noDataLayout.visibility = View.INVISIBLE
+        recyclerView.visibility = View.VISIBLE
+    }
+
+    private fun hideData() {
+        noDataLayout.visibility = View.VISIBLE
+        recyclerView.visibility = View.INVISIBLE
     }
 
     override fun onDestroy() {

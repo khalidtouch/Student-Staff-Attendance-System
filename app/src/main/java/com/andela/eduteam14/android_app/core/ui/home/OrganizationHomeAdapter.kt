@@ -13,7 +13,6 @@ import com.andela.eduteam14.android_app.databinding.DailyAttendanceItemBinding
 
 
 class OrganizationHomeAdapter(
-    private val context: Context,
     private val registry: AttendanceRegistry,
 ) : ListAdapter<LocalDailyAttendance, OrganizationHomeAdapter.ViewHolder>(DiffUtilCallback()) {
 
@@ -23,69 +22,34 @@ class OrganizationHomeAdapter(
         fun bind(attendance: LocalDailyAttendance) {
             itemBinding.apply {
 
-                totalMalesStaff.text = context.getString(
-                    R.string.total_male_staff,
-                    registry.numberOfMaleStaff.toString()
-                )
+                totalMalesStaff.text = ""
 
-                totalFemalesStaff.text = context.getString(
-                    R.string.total_female_staff,
-                    registry.numberOfFemaleStaff.toString()
-                )
+                totalFemalesStaff.text = ""
 
-                totalMalesStudent.text = context.getString(
-                    R.string.male_student,
-                    registry.numberOfMaleStudents.toString()
-                )
+                totalMalesStudent.text = ""
 
-                totalFemalesStudent.text = context.getString(
-                    R.string.female_student,
-                    registry.numberOfFemaleStudents.toString()
-                )
+                totalFemalesStudent.text = ""
 
-                time.text = attendance.staffAttendance.dateModified
+                time.text = ""
 
-                SchoolName.text = attendance.staffAttendance.schoolName
+                SchoolName.text = ""
 
-                MaleStaffPresent.text = context.getString(
-                    R.string.male_staff,
-                    attendance.staffAttendance.malesPresent.toString()
-                )
-                FemaleStaffPresent.text = context.getString(
-                    R.string.female_staff,
-                    attendance.staffAttendance.femalesPresent.toString()
-                )
+                MaleStaffPresent.text = ""
 
-                MaleStudentPresent.text = context.getString(
-                    R.string.male_student,
-                    attendance.studentAttendance.malesPresent.toString()
-                )
+                FemaleStaffPresent.text = ""
 
-                FemaleStudentPresent.text = context.getString(
-                    R.string.female_student,
-                    attendance.studentAttendance.femalesPresent.toString()
-                )
+                MaleStudentPresent.text = ""
 
-                MaleStaffAbsent.text = context.getString(
-                    R.string.male_staff,
-                    (registry.numberOfMaleStaff - attendance.staffAttendance.malesPresent).toString()
-                )
+                FemaleStudentPresent.text = ""
 
-                FemaleStaffAbsent.text = context.getString(
-                    R.string.female_staff,
-                    (registry.numberOfFemaleStaff - attendance.staffAttendance.femalesPresent).toString()
-                )
+                MaleStaffAbsent.text = ""
+
+                FemaleStaffAbsent.text = ""
 
 
-                MaleStudentAbsent.text = context.getString(
-                    R.string.male_student,
-                    (registry.numberOfMaleStudents - attendance.studentAttendance.malesPresent).toString()
-                )
+                MaleStudentAbsent.text = ""
 
-                FemaleStudentAbsent.text = context.getString(
-                    R.string.female_student,
-                    (registry.numberOfFemaleStudents - attendance.studentAttendance.femalesPresent).toString()
-                )
+                FemaleStudentAbsent.text = ""
             }
         }
     }
@@ -103,7 +67,7 @@ class OrganizationHomeAdapter(
             oldItem: LocalDailyAttendance,
             newItem: LocalDailyAttendance
         ): Boolean {
-            return oldItem.attendanceId == newItem.attendanceId
+            return oldItem.AttendanceId == newItem.AttendanceId
         }
 
     }
