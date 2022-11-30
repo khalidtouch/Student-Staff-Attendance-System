@@ -21,11 +21,13 @@ import com.andela.eduteam14.android_app.core.ui.viewmodel.OrganizationViewModel
 import com.andela.eduteam14.android_app.core.ui.viewmodel.OrganizationViewModelFactory
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModel
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModelFactory
+import com.andela.eduteam14.android_app.databinding.FragmentOrganizationProfileBinding
 import com.andela.eduteam14.android_app.databinding.FragmentSettingsOrganizationBinding
 import com.andela.eduteam14.android_app.databinding.FragmentSettingsSchoolBinding
 
 class SettingsOrganizationFragment : Fragment(), UiAction {
 
+    private lateinit var organizationProfile: LinearLayout
     private var _binding: FragmentSettingsOrganizationBinding? = null
 
     private val binding get() = _binding
@@ -38,11 +40,6 @@ class SettingsOrganizationFragment : Fragment(), UiAction {
         OrganizationViewModelFactory(
             (activity as OrganizationBaseActivity).coreComponent.repository,
         )
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
     }
 
     override fun onCreateView(
@@ -59,18 +56,33 @@ class SettingsOrganizationFragment : Fragment(), UiAction {
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
-        logout.onClick { (activity as OrganizationBaseActivity).goto(AuthActivity::class.java) }
+        logout.onClick {
+            viewModel.logout()
+
+            (activity as OrganizationBaseActivity)
+                .goto(AuthActivity::class.java)
+        }
 
         adminProfile.onClick {
             findNavController().navigate(
                 R.id.action_settingsOrganizationFragment_to_adminProfileOrganizationFragment
             )
         }
+
+        organizationProfile.onClick {
+            findNavController().navigate(
+                R.id.action_settingsOrganizationFragment_to_organizationProfileFragment
+            )
+        }
+
     }
+
+
 
     override fun initViews() {
         logout = binding?.OrganizationSettingsFragmentLogoutBtn!!
         adminProfile = binding?.AdminProfile!!
+        organizationProfile = binding?.OrganizationProfile!!
     }
 
     override fun onDestroyComponents() {

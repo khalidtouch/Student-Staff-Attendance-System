@@ -140,4 +140,5 @@
     <string name="classLevel">Grade %1$s</string>
     <string name="class_counter">1</string>
     <string name="completed">Completed</string>
+    <string name="organization_profile">Organization Profile</string>
 </resources>

@@ -49,6 +49,32 @@
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/OrganizationProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/search_bar_background"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AdminProfile">
+
+        <TextView
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:text="@string/organization_profile"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/OrganizationSettingsFragmentLogoutBtn"
         style="@style/Widget.Material3.Button"
@@ -58,11 +84,13 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/LocalRed"
         android:text="@string/logout"
+        android:layout_marginTop="150dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/OrganizationProfile" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline14"

@@ -79,8 +79,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$USER_HOME$/Downloads/school.png" />
-                                                <entry key="scalingPercent" value="49" />
+                                                <entry key="imagePath" value="$USER_HOME$/Downloads/eduteam_001_edited.png" />
+                                                <entry key="scalingPercent" value="44" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -113,8 +113,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="7a5304" />
-                                      <entry key="outputName" value="ic_school" />
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="outputName" value="ic_eduteam" />
                                     </map>
                                   </option>
                                 </PersistentState>

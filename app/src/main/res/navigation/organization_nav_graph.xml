@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_settingsOrganizationFragment_to_adminProfileOrganizationFragment"
             app:destination="@id/adminProfileOrganizationFragment" />
+        <action
+            android:id="@+id/action_settingsOrganizationFragment_to_organizationProfileFragment"
+            app:destination="@id/organizationProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment3"
@@ -35,4 +38,8 @@
         android:id="@+id/adminProfileOrganizationFragment"
         android:name="com.andela.eduteam14.android_app.core.ui.profile.AdminProfileOrganizationFragment"
         android:label="AdminProfileOrganizationFragment" />
+    <fragment
+        android:id="@+id/organizationProfileFragment"
+        android:name="com.andela.eduteam14.android_app.core.ui.profile.OrganizationProfileFragment"
+        android:label="OrganizationProfileFragment" />
 </navigation>

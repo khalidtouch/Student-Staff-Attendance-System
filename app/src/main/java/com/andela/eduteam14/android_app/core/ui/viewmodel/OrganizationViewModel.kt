@@ -13,12 +13,12 @@ class OrganizationViewModel(
     private val repository: MainRepository,
 ) : ViewModel() {
 
-    fun findAllAttendance(onResult: (Query) -> Unit) {
-        viewModelScope.launch {
-            repository.findAllAttendance(onResult)
-        }
+   fun logout() {
+       viewModelScope.launch {
+           repository.logout()
+       }
 
-    }
+   }
 }
 
 

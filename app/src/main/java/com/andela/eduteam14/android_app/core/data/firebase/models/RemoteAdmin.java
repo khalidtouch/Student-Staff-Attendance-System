@@ -8,12 +8,24 @@ public class RemoteAdmin {
     private String AdminName;
     private String AdminEmail;
 
-    public RemoteAdmin() {}
+    private String Account;
 
-    public RemoteAdmin(String adminId, String adminName, String adminEmail) {
+    public RemoteAdmin() {
+    }
+
+    public RemoteAdmin(String adminId, String adminName, String adminEmail, String account) {
         AdminId = adminId;
         AdminName = adminName;
         AdminEmail = adminEmail;
+        Account = account;
+    }
+
+    public String getAccount() {
+        return Account;
+    }
+
+    public void setAccount(String account) {
+        Account = account;
     }
 
     public String getAdminId() {
@@ -44,7 +56,8 @@ public class RemoteAdmin {
         return new LocalAdmin(
                 AdminId,
                 AdminName,
-                AdminEmail
+                AdminEmail,
+                Account
         );
     }
 }
