@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.andela.eduteam14.android_app.core.data.mock.AttendanceDataSource
 import com.andela.eduteam14.android_app.core.data.mock.AttendanceRegistry
+import com.andela.eduteam14.android_app.core.data.models.CreateOrganizationRequest
 import com.andela.eduteam14.android_app.core.data.repository.MainRepository
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.launch
@@ -13,12 +14,22 @@ class OrganizationViewModel(
     private val repository: MainRepository,
 ) : ViewModel() {
 
-   fun logout() {
-       viewModelScope.launch {
-           repository.logout()
-       }
+    private var _createOrganiztionRequest: CreateOrganizationRequest = CreateOrganizationRequest()
 
-   }
+    val createOrganizationRequest get() = _createOrganiztionRequest
+
+    fun setOrganizationRequest(request: CreateOrganizationRequest) {
+        this._createOrganiztionRequest = request
+    }
+
+
+
+    fun logout() {
+        viewModelScope.launch {
+            repository.logout()
+        }
+
+    }
 }
 
 
