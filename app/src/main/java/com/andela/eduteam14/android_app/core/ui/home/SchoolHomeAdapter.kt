@@ -25,7 +25,7 @@ import com.google.firebase.firestore.Query
 class SchoolHomeAdapter(
     private val context: Context,
     query: Query,
-    private val onSelectAttendance: (LocalDailyAttendance) -> Unit,
+    private var onSelectAttendance: (LocalDailyAttendance) -> Unit = {},
 ) :
     FireStoreAdapter<SchoolHomeAdapter.ViewHolder>(query) {
 
@@ -158,4 +158,6 @@ class SchoolHomeAdapter(
             holder.bind(it, onSelectAttendance = onSelectAttendance)
         }
     }
+
+    fun snapshots(): ArrayList<DocumentSnapshot>? = getSnapshots()
 }

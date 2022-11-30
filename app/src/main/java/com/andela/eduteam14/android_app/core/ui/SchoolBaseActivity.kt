@@ -39,6 +39,8 @@ class SchoolBaseActivity : AppCompatActivity(), UiAction {
 
         setContentView(binding?.root)
 
+        Log.d(TAG, "onCreate: SchoolBaseActivity called onCreate")
+
         initViews()
 
         val navHostFragment =

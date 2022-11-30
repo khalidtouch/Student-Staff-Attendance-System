@@ -77,6 +77,10 @@ abstract class FireStoreAdapter<ViewHolder : RecyclerView.ViewHolder>(
         return snapshots[index]
     }
 
+    protected open fun getSnapshots(): ArrayList<DocumentSnapshot>? {
+        return snapshots
+    }
+
     companion object {
         const val TAG = "FirebaseAdapter"
     }

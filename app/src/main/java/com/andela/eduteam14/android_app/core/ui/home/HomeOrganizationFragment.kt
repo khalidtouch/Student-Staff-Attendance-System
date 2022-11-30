@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.andela.eduteam14.android_app.core.data.firebase.manager.firestore.FireStoreManagerImpl
 import com.andela.eduteam14.android_app.core.ui.OrganizationBaseActivity
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
@@ -18,6 +20,10 @@ import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModel
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModelFactory
 import com.andela.eduteam14.android_app.databinding.FragmentHomeOrganizationBinding
 import com.andela.eduteam14.android_app.databinding.FragmentHomeSchoolBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class HomeOrganizationFragment : Fragment(), UiAction {
 
@@ -27,6 +33,10 @@ class HomeOrganizationFragment : Fragment(), UiAction {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var organizationAdapter: OrganizationHomeAdapter
+
+    private lateinit var query: Query
+    private lateinit var fireStore: FirebaseFirestore
+
 
     private val viewModel: OrganizationViewModel by viewModels {
         OrganizationViewModelFactory(
@@ -48,21 +58,41 @@ class HomeOrganizationFragment : Fragment(), UiAction {
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
+        fireStore = Firebase.firestore
 
-//        organizationAdapter = OrganizationHomeAdapter(viewModel.attendanceRegistry)
-//
-//
-//        recyclerView.apply {
-//            layoutManager = LinearLayoutManager(requireContext())
-//            adapter = organizationAdapter
-//        }
-//
-//        if (viewModel.entries.isEmpty()) hideData() else {
-//            organizationAdapter.submitList(viewModel.entries)
-//            showData()
-//        }
+        val first = fireStore.collection(FireStoreManagerImpl.REF_ATTENDANCE)
+            .orderBy("DateModified")
 
 
+        query = first
+
+        organizationAdapter = OrganizationHomeAdapter(requireContext(), query) { attendance ->
+            Toast.makeText(requireContext(), attendance.SchoolName, Toast.LENGTH_SHORT).show()
+        }
+
+        organizationAdapter.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
+
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = organizationAdapter
+        }
+
+
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        organizationAdapter.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        organizationAdapter.stopListening()
     }
 
     override fun initViews() {

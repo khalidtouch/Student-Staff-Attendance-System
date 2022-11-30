@@ -60,4 +60,6 @@ class HistorySchoolAdapter(
             holder.bind(it, onSelectAttendance = onSelectAttendance)
         }
     }
+
+    fun snapshots(): ArrayList<DocumentSnapshot>? = getSnapshots()
 }

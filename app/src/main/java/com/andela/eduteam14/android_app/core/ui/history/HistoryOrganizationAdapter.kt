@@ -61,4 +61,6 @@ class HistoryOrganizationAdapter(
             holder.bind(it, onSelectAttendance = onSelectAttendance)
         }
     }
+
+    fun snapshots(): ArrayList<DocumentSnapshot>? = getSnapshots()
 }

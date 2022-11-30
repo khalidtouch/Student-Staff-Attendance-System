@@ -74,12 +74,20 @@ class StaffAttendanceFragment : Fragment(), UiAction {
 
         males.onChange {
             viewModel.setMaleStaff(it.trim())
-            Toast.makeText(requireContext(), it.substring(it.length - 1), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                viewModel.dailyStaffAttendanceRequest.maleStaff,
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         females.onChange {
             viewModel.setFemaleStaff(it.trim())
-            Toast.makeText(requireContext(), it.substring(it.length - 1), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                viewModel.dailyStaffAttendanceRequest.femaleStaff,
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         commit.onClick {

@@ -12,6 +12,7 @@ import com.andela.eduteam14.android_app.core.data.models.DailyStudentAttendanceR
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
 import com.andela.eduteam14.android_app.core.data.repository.MainRepository
 import com.andela.eduteam14.android_app.core.domain.usecase.StudentAggregationUseCase
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.launch
 
 class SchoolViewModel(
@@ -148,6 +149,12 @@ class SchoolViewModel(
     fun createSchool(onResult: (Boolean) -> Unit) {
         viewModelScope.launch {
             repository.createSchool(_createSchoolRequest, onResult)
+        }
+    }
+
+    fun findAllAttendance(onResult: (Query) -> Unit) {
+        viewModelScope.launch {
+            repository.findAllAttendance(onResult)
         }
     }
 

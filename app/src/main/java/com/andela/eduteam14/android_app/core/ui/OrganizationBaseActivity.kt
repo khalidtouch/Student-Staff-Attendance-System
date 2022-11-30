@@ -2,23 +2,30 @@ package com.andela.eduteam14.android_app.core.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.andela.eduteam14.android_app.MainApplication
 import com.andela.eduteam14.android_app.R
 import com.andela.eduteam14.android_app.core.di.CoreComponent
 import com.andela.eduteam14.android_app.databinding.ActivityBaseBinding
 import com.andela.eduteam14.android_app.databinding.ActivityOrganizationBaseBinding
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class OrganizationBaseActivity : AppCompatActivity(), UiAction {
 
-    private lateinit var navView: BottomNavigationView
     private var _binding: ActivityOrganizationBaseBinding? = null
 
     private val binding get() = _binding
 
+    private lateinit var navController: NavController
+    private lateinit var navView: BottomNavigationView
+
     lateinit var coreComponent: CoreComponent
+
+    lateinit var toolbar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +42,16 @@ class OrganizationBaseActivity : AppCompatActivity(), UiAction {
             supportFragmentManager.findFragmentById(R.id.OrganizationBaseNavHostFragment)
                     as NavHostFragment
 
-        val navController = navHostFragment.navController
+        navController = navHostFragment.navController
+
+        val appBarConfig = AppBarConfiguration(
+            topLevelDestinationIds = setOf(),
+            fallbackOnNavigateUpListener = ::onSupportNavigateUp
+        )
+
+        val toolbar = binding?.BaseToolbar!!
+        toolbar.setupWithNavController(navController, appBarConfig)
+
         navView.setupWithNavController(navController)
 
     }

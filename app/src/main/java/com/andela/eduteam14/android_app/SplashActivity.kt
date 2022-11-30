@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
+import com.andela.eduteam14.android_app.core.ui.OrganizationBaseActivity
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.auth.AuthActivity
@@ -28,7 +30,7 @@ class SplashActivity : AppCompatActivity(), UiAction {
         initViews()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            goto(SchoolBaseActivity::class.java)
+            goto(OrganizationBaseActivity::class.java)
         }, 2000)
     }
 
@@ -43,5 +45,11 @@ class SplashActivity : AppCompatActivity(), UiAction {
     override fun onDestroy() {
         onDestroyComponents()
         super.onDestroy()
+
+        Log.d(TAG, "onDestroy: ended successfully")
+    }
+
+    companion object  {
+        const val  TAG = "SplashActivity"
     }
 }

@@ -8,6 +8,6 @@ data class DailyStaffAttendanceRequest(
     fun isValid(): Boolean {
         val invalid = date.isEmpty() || maleStaff.isEmpty() || femaleStaff.isEmpty()
 
-        return !invalid
+        return true //todo
     }
 }

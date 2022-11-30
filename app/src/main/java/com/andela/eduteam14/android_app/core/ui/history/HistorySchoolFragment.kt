@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.andela.eduteam14.android_app.core.data.firebase.manager.firestore.FireStoreManagerImpl
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.home.SchoolHomeAdapter
@@ -17,6 +19,10 @@ import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModel
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModelFactory
 import com.andela.eduteam14.android_app.databinding.FragmentHistorySchoolBinding
 import com.andela.eduteam14.android_app.databinding.FragmentHomeSchoolBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class HistorySchoolFragment : Fragment(), UiAction {
 
@@ -26,6 +32,10 @@ class HistorySchoolFragment : Fragment(), UiAction {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var historyAdapter: HistorySchoolAdapter
+
+    private lateinit var query: Query
+    private lateinit var fireStore: FirebaseFirestore
+
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
@@ -54,22 +64,41 @@ class HistorySchoolFragment : Fragment(), UiAction {
 
         (activity as SchoolBaseActivity).hideFab()
 
-//        historyAdapter = HistorySchoolAdapter()
-//
-//
-//        recyclerView.apply {
-//            layoutManager = LinearLayoutManager(requireContext())
-//            adapter = historyAdapter
-//        }
-//
-//        if (viewModel.history.isEmpty()) hideData() else {
-//            historyAdapter.submitList(viewModel.history)
-//            showData()
-//        }
+        fireStore = Firebase.firestore
 
+        val first = fireStore.collection(FireStoreManagerImpl.REF_ATTENDANCE)
+            .orderBy("DateModified")
+
+
+        query = first
+
+
+        historyAdapter = HistorySchoolAdapter(requireContext(), query) { history ->
+            Toast.makeText(requireContext(), history.SchoolName, Toast.LENGTH_SHORT).show()
+        }
+
+        historyAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
+
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = historyAdapter
+        }
+        
 
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        historyAdapter.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        historyAdapter.stopListening()
+    }
 
     override fun initViews() {
         recyclerView = binding?.HistorySchoolRecyclerView!!
