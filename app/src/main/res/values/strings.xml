@@ -146,5 +146,8 @@
     <string name="already_registered_login">Already registered? Login</string>
     <string name="complete">Complete</string>
     <string name="resend_otp">Resend OTP</string>
+    <string name="create_organization">Create Organization</string>
+    <string name="hint_country">Country</string>
+    <string name="can_create_org">Sorry, you already own an Organization</string>
 
 </resources>

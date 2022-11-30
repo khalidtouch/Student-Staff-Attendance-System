@@ -32,6 +32,8 @@ interface FireStoreManager {
 
     fun findOrganizationById(id: String, onResult: (RemoteOrganization) -> Unit)
 
+    fun findOrganizationByAdminEmail(email: String, onResult: (RemoteOrganization) -> Unit)
+
     fun findAllOrganizations(onResult: (Query) -> Unit)
 
     fun findAttendanceById(id: String, onResult: (RemoteDailyAttendance) -> Unit)

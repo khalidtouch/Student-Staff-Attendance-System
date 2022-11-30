@@ -38,6 +38,10 @@ class MainRepositoryImpl(
         authManager.logout()
     }
 
+    override fun activeAdminEmail(onResult: (String) -> Unit) {
+        authManager.activeAdminEmail(onResult)
+    }
+
     override fun createSchool(request: CreateSchoolRequest, onResult: (Boolean) -> Unit) {
         fireStoreManager.createSchool(request, onResult)
     }
@@ -75,6 +79,13 @@ class MainRepositoryImpl(
 
     override fun findOrganizationById(id: String, onResult: (RemoteOrganization) -> Unit) {
         fireStoreManager.findOrganizationById(id, onResult)
+    }
+
+    override fun findOrganizationByAdminEmail(
+        email: String,
+        onResult: (RemoteOrganization) -> Unit
+    ) {
+        fireStoreManager.findOrganizationByAdminEmail(email, onResult)
     }
 
     override fun findAllOrganizations(onResult: (Query) -> Unit) {

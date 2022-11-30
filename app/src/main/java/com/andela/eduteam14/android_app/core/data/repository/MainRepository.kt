@@ -19,6 +19,8 @@ interface MainRepository {
 
     fun logout() //
 
+    fun activeAdminEmail(onResult: (String) -> Unit)
+
 
     fun createSchool(request: CreateSchoolRequest, onResult: (Boolean) -> Unit)
 
@@ -38,6 +40,8 @@ interface MainRepository {
     fun findOrganizationByName(name: String, onResult: (RemoteOrganization) -> Unit)
 
     fun findOrganizationById(id: String, onResult: (RemoteOrganization) -> Unit)
+
+    fun findOrganizationByAdminEmail(email: String, onResult: (RemoteOrganization) -> Unit)
 
     fun findAllOrganizations(onResult: (Query) -> Unit)
 

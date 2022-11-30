@@ -126,6 +126,22 @@ class FireStoreManagerImpl(
             }
     }
 
+    override fun findOrganizationByAdminEmail(
+        email: String,
+        onResult: (RemoteOrganization) -> Unit
+    ) {
+        fireStore.collection(REF_ORGANIZATIONS)
+            .whereEqualTo("AdminEmail", email)
+            .get()
+            .addOnSuccessListener { docs ->
+                docs.forEach {
+                    val organization = it.toObject<RemoteOrganization>()
+                    onResult(organization)
+                }
+            }
+    }
+
+
     override fun findAllOrganizations(onResult: (Query) -> Unit) {
         //real-time with paging
 

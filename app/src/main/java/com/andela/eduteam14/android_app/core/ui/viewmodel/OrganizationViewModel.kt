@@ -3,31 +3,45 @@ package com.andela.eduteam14.android_app.core.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.andela.eduteam14.android_app.core.data.mock.AttendanceDataSource
-import com.andela.eduteam14.android_app.core.data.mock.AttendanceRegistry
+import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteOrganization
 import com.andela.eduteam14.android_app.core.data.models.CreateOrganizationRequest
 import com.andela.eduteam14.android_app.core.data.repository.MainRepository
-import com.google.firebase.firestore.Query
 import kotlinx.coroutines.launch
 
 class OrganizationViewModel(
     private val repository: MainRepository,
 ) : ViewModel() {
 
-    private var _createOrganiztionRequest: CreateOrganizationRequest = CreateOrganizationRequest()
+    private var _createOrganizationRequest: CreateOrganizationRequest = CreateOrganizationRequest()
 
-    val createOrganizationRequest get() = _createOrganiztionRequest
+    val createOrganizationRequest get() = _createOrganizationRequest
 
     fun setOrganizationRequest(request: CreateOrganizationRequest) {
-        this._createOrganiztionRequest = request
+        this._createOrganizationRequest = request
     }
 
 
+    fun saveOrganization(onResult: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            repository.createOrganization(_createOrganizationRequest, onResult)
+        }
+    }
 
     fun logout() {
         viewModelScope.launch {
             repository.logout()
         }
+
+    }
+
+    fun findOrganizationByAdminEmail(email: String, onResult: (RemoteOrganization) -> Unit) {
+        viewModelScope.launch {
+            repository.findOrganizationByAdminEmail(email, onResult)
+        }
+    }
+
+    fun activeAdminEmail(onResult: (String) -> Unit) {
+        viewModelScope.launch { repository.activeAdminEmail(onResult) }
 
     }
 }

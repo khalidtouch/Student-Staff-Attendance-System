@@ -3,19 +3,28 @@ package com.andela.eduteam14.android_app.core.data.firebase.models;
 import com.andela.eduteam14.android_app.core.data.models.LocalOrganization;
 
 public class RemoteOrganization {
-    private String OrganizationId, Name, Location, Address, DateModified;
+    private String OrganizationId, Name, Location, Address, DateModified, AdminEmail;
 
     public RemoteOrganization() {
 
     }
 
     public RemoteOrganization(String organizationId, String name, String location,
-                              String address, String dateModified) {
+                              String address, String dateModified, String adminEmail) {
         Name = name;
         Location = location;
         Address = address;
         DateModified = dateModified;
         OrganizationId = organizationId;
+        AdminEmail = adminEmail;
+    }
+
+    public String getAdminEmail() {
+        return AdminEmail;
+    }
+
+    public void setAdminEmail(String adminEmail) {
+        AdminEmail = adminEmail;
     }
 
     public String getOrganizationId() {
@@ -64,7 +73,8 @@ public class RemoteOrganization {
                 Name,
                 Location,
                 Address,
-                DateModified
+                DateModified,
+                AdminEmail
         );
     }
 }

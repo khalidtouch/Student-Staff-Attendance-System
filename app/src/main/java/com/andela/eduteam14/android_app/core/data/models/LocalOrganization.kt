@@ -9,6 +9,7 @@ data class LocalOrganization(
     val Location: String,
     val Address: String,
     val DateModified: String,
+    val AdminEmail: String,
 ) {
 
     fun mapToRemote(): RemoteOrganization {
@@ -17,7 +18,8 @@ data class LocalOrganization(
             Name,
             Location,
             Address,
-            DateModified
+            DateModified,
+            AdminEmail
         )
     }
 
@@ -27,7 +29,8 @@ data class LocalOrganization(
             Name = "Federal Ministry of Education",
             Location = "Abuja, Nigeria",
             Address = "No, 2 GT road, Abuja",
-            DateModified = "March 13, 2020"
+            DateModified = "March 13, 2020",
+            AdminEmail = "khalid@gmail.com"
         )
     }
 }

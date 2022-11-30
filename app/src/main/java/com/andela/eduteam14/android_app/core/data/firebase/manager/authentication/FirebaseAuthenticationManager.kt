@@ -9,4 +9,6 @@ interface FirebaseAuthenticationManager {
    fun login(request: LoginAdminRequest, onResult: (Boolean) -> Unit)
 
    fun logout()
+
+   fun activeAdminEmail(onResult: (String) -> Unit)
 }
