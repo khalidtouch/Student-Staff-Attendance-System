@@ -1,5 +1,6 @@
 package com.andela.eduteam14.android_app.core.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -62,7 +63,13 @@ class LoginFragment : Fragment(), UiAction {
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
-        registerInstead.onClick { findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
+        registerInstead.onClick {
+            activity.let {
+                //start MobileNumberVerificationActivity
+                val intent = Intent(it, MobileNumberVerificationActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
 
 
@@ -104,6 +111,9 @@ class LoginFragment : Fragment(), UiAction {
             snackBar(binding?.root as View, getString(R.string.not_yet_implemented))
         }
     }
+
+    //start MobileNumberVerificationActivity
+
 
     override fun initViews() {
         login = binding?.LoginFragmentLoginBtn!!

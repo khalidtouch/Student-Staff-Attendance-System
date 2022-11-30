@@ -96,7 +96,8 @@
     <string name="commit">Commit</string>
     <string name="hint_female_student">Female Student</string>
     <string name="hint_male_student">Male Student</string>
-    <!-- This will need to be update with code -->
+
+
     <string name="date">March, 22, 2022</string>
     <string name="female_staff">F-Staff %1$s</string>
     <string name="hint_male_staff">Male Staff</string>
@@ -141,4 +142,9 @@
     <string name="class_counter">1</string>
     <string name="completed">Completed</string>
     <string name="organization_profile">Organization Profile</string>
+    <string name="login_with_mobile_number">Login with Mobile Number</string>
+    <string name="already_registered_login">Already registered? Login</string>
+    <string name="complete">Complete</string>
+    <string name="resend_otp">Resend OTP</string>
+
 </resources>
