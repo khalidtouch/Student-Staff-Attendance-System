@@ -81,6 +81,7 @@ class LoginFragment : Fragment(), UiAction {
                     if(it){
                         snackBar(binding?.root as View, "You're in")
 
+                        (activity as AuthActivity).goto(SchoolBaseActivity::class.java)
 
                     } else  snackBar(binding?.root as View, "Sorry, something went wrong")
                 }

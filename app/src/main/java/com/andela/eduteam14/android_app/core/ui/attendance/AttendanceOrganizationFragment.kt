@@ -27,8 +27,7 @@ class AttendanceOrganizationFragment : Fragment(), UiAction {
 
     private val viewModel: OrganizationViewModel by viewModels {
         OrganizationViewModelFactory(
-            (activity as OrganizationBaseActivity).coreComponent.registry,
-            (activity as OrganizationBaseActivity).coreComponent.dataSource,
+            (activity as OrganizationBaseActivity).coreComponent.repository
         )
     }
 
@@ -47,15 +46,15 @@ class AttendanceOrganizationFragment : Fragment(), UiAction {
         initViews()
 
 
-        organizationAdapter = OrganizationHomeAdapter( viewModel.attendanceRegistry)
-
-
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = organizationAdapter
-        }
-
-        organizationAdapter.submitList(viewModel.entries)
+//        organizationAdapter = object : OrganizationHomeAdapter()
+//
+//
+//        recyclerView.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = organizationAdapter
+//        }
+//
+//        organizationAdapter.submitList(viewModel.entries)
 
     }
 

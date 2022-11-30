@@ -26,8 +26,7 @@ class StaffAttendanceFragment : Fragment(), UiAction {
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
-            (activity as SchoolBaseActivity).coreComponent.registry,
-            (activity as SchoolBaseActivity).coreComponent.dataSource,
+            (activity as SchoolBaseActivity).coreComponent.repository
         )
     }
 

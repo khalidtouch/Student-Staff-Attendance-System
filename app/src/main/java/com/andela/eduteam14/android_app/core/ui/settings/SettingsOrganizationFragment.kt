@@ -36,8 +36,7 @@ class SettingsOrganizationFragment : Fragment(), UiAction {
 
     private val viewModel: OrganizationViewModel by viewModels {
         OrganizationViewModelFactory(
-            (activity as OrganizationBaseActivity).coreComponent.registry,
-            (activity as OrganizationBaseActivity).coreComponent.dataSource,
+            (activity as OrganizationBaseActivity).coreComponent.repository,
         )
     }
 

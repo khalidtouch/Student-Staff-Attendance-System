@@ -32,8 +32,7 @@ class HomeSchoolFragment : Fragment(), UiAction {
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
-            (activity as SchoolBaseActivity).coreComponent.registry,
-            (activity as SchoolBaseActivity).coreComponent.dataSource,
+            (activity as SchoolBaseActivity).coreComponent.repository
         )
     }
 
@@ -59,20 +58,20 @@ class HomeSchoolFragment : Fragment(), UiAction {
 
         (activity as SchoolBaseActivity).hideFab()
 
-        homeAdapter = SchoolHomeAdapter( registry)
-
-
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = homeAdapter
-        }
-
-        if(viewModel.entries.isEmpty()) {
-           hideData()
-        } else {
-            homeAdapter.submitList(viewModel.entries)
-            showData()
-        }
+//        homeAdapter = SchoolHomeAdapter( registry)
+//
+//
+//        recyclerView.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = homeAdapter
+//        }
+//
+//        if(viewModel.entries.isEmpty()) {
+//           hideData()
+//        } else {
+//            homeAdapter.submitList(viewModel.entries)
+//            showData()
+//        }
 
     }
 

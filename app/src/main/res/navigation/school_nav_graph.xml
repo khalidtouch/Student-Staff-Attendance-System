@@ -36,9 +36,6 @@
         <action
             android:id="@+id/action_settingsSchoolFragment_to_adminProfileFragment"
             app:destination="@id/adminProfileFragment" />
-        <action
-            android:id="@+id/action_settingsSchoolFragment_to_loginFragment2"
-            app:destination="@id/loginFragment2" />
     </fragment>
     <fragment
         android:id="@+id/staffAttendanceFragment"
@@ -50,7 +47,7 @@
         android:label="StudentAttendanceFragment" />
     <fragment
         android:id="@+id/classInformationFragment"
-        android:name="com.andela.eduteam14.android_app.core.ui.addschool.ClassInformationFragment"
+        android:name="com.andela.eduteam14.android_app.core.ui.classinformation.ClassInformationFragment"
         android:label="ClassInformationFragment" />
     <fragment
         android:id="@+id/addSchoolFragment2"
@@ -60,8 +57,4 @@
         android:id="@+id/adminProfileFragment"
         android:name="com.andela.eduteam14.android_app.core.ui.profile.AdminProfileFragment"
         android:label="AdminProfileFragment" />
-    <fragment
-        android:id="@+id/loginFragment2"
-        android:name="com.andela.eduteam14.android_app.core.ui.auth.LoginFragment"
-        android:label="LoginFragment" />
 </navigation>

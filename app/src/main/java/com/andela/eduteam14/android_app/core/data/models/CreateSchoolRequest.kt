@@ -3,13 +3,13 @@ package com.andela.eduteam14.android_app.core.data.models
 
 
 data class CreateSchoolRequest(
-    val SchoolCode: String = "",
-    val OrganizationId: String = "",
-    val SchoolName: String = "",
-    val AdminName: String = "",
-    val Address: String = "",
-    val SchoolLocation: String = "",
-    val DateModified: String = "",
+    var SchoolCode: String = "",
+    var OrganizationId: String = "",
+    var SchoolName: String = "",
+    var AdminName: String = "",
+    var Address: String = "",
+    var SchoolLocation: String = "",
+    var DateModified: String = "",
 ) {
     fun isValid(): Boolean {
         val invalid = OrganizationId.isEmpty() || SchoolName.isEmpty()

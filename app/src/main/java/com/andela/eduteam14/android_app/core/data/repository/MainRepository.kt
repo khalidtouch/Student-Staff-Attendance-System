@@ -9,14 +9,15 @@ import com.andela.eduteam14.android_app.core.data.models.CreateOrganizationReque
 import com.andela.eduteam14.android_app.core.data.models.CreateSchoolRequest
 import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
 import com.andela.eduteam14.android_app.core.data.models.LoginAdminRequest
+import com.google.firebase.firestore.Query
 
 interface MainRepository {
 
-    fun createAccount(request: CreateAdminRequest, onResult: (Boolean) -> Unit)
+    fun createAccount(request: CreateAdminRequest, onResult: (Boolean) -> Unit) //
 
-    fun login(request: LoginAdminRequest, onResult: (Boolean) -> Unit)
+    fun login(request: LoginAdminRequest, onResult: (Boolean) -> Unit) //
 
-    fun logout()
+    fun logout() //
 
 
     fun createSchool(request: CreateSchoolRequest, onResult: (Boolean) -> Unit)
@@ -32,25 +33,25 @@ interface MainRepository {
 
     fun findSchoolByName(name: String, onResult: (RemoteSchool) -> Unit)
 
-    fun findAllSchools(onResult: (List<RemoteSchool>) -> Unit)
+    fun findAllSchools(onResult: (Query) -> Unit)
 
     fun findOrganizationByName(name: String, onResult: (RemoteOrganization) -> Unit)
 
     fun findOrganizationById(id: String, onResult: (RemoteOrganization) -> Unit)
 
-    fun findAllOrganizations(onResult: (List<RemoteOrganization>) -> Unit)
+    fun findAllOrganizations(onResult: (Query) -> Unit)
 
     fun findAttendanceById(id: String, onResult: (RemoteDailyAttendance) -> Unit)
 
     fun findAttendanceBySchool(schoolName: String, onResult: (RemoteDailyAttendance) -> Unit)
 
-    fun findAllAttendance(onResult: (List<RemoteDailyAttendance>) -> Unit)
+    fun findAllAttendance(onResult: (Query) -> Unit)
 
     fun findAdminById(id: String, onResult: (RemoteAdmin) -> Unit)
 
     fun findAdminByName(name: String, onResult: (RemoteAdmin) -> Unit)
 
-    fun findAllAdmins(onResult: (List<RemoteAdmin>) -> Unit)
+    fun findAllAdmins(onResult: (Query) -> Unit)
 
 
     //DELETE

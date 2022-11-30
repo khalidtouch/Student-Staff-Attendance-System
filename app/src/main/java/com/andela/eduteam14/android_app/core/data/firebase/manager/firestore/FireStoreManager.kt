@@ -1,5 +1,6 @@
 package com.andela.eduteam14.android_app.core.data.firebase.manager.firestore
 
+
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteAdmin
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteDailyAttendance
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteOrganization
@@ -8,6 +9,7 @@ import com.andela.eduteam14.android_app.core.data.models.CreateAdminRequest
 import com.andela.eduteam14.android_app.core.data.models.CreateOrganizationRequest
 import com.andela.eduteam14.android_app.core.data.models.CreateSchoolRequest
 import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
+import com.google.firebase.firestore.Query
 
 interface FireStoreManager {
 
@@ -24,25 +26,25 @@ interface FireStoreManager {
 
     fun findSchoolByName(name: String, onResult: (RemoteSchool) -> Unit)
 
-    fun findAllSchools(onResult: (List<RemoteSchool>) -> Unit)
+    fun findAllSchools(onResult: (Query) -> Unit)
 
     fun findOrganizationByName(name: String, onResult: (RemoteOrganization) -> Unit)
 
     fun findOrganizationById(id: String, onResult: (RemoteOrganization) -> Unit)
 
-    fun findAllOrganizations(onResult: (List<RemoteOrganization>) -> Unit)
+    fun findAllOrganizations(onResult: (Query) -> Unit)
 
     fun findAttendanceById(id: String, onResult: (RemoteDailyAttendance) -> Unit)
 
     fun findAttendanceBySchool(schoolName: String, onResult: (RemoteDailyAttendance) -> Unit)
 
-    fun findAllAttendance(onResult: (List<RemoteDailyAttendance>) -> Unit)
+    fun findAllAttendance(onResult: (Query) -> Unit)
 
     fun findAdminById(id: String, onResult: (RemoteAdmin) -> Unit)
 
     fun findAdminByName(name: String, onResult: (RemoteAdmin) -> Unit)
 
-    fun findAllAdmins(onResult: (List<RemoteAdmin>) -> Unit)
+    fun findAllAdmins(onResult: (Query) -> Unit)
 
 
     //DELETE
@@ -51,4 +53,5 @@ interface FireStoreManager {
     fun removeOrganizationById(id: String, onResult: (Boolean) -> Unit)
 
     fun removeAttendanceById(id: String, onResult: (Boolean) -> Unit)
+
 }

@@ -40,8 +40,7 @@ class SettingsSchoolFragment : Fragment(), UiAction {
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
-            (activity as SchoolBaseActivity).coreComponent.registry,
-            (activity as SchoolBaseActivity).coreComponent.dataSource,
+            (activity as SchoolBaseActivity).coreComponent.repository,
         )
     }
 
@@ -66,17 +65,24 @@ class SettingsSchoolFragment : Fragment(), UiAction {
 
         (activity as SchoolBaseActivity).hideFab()
 
-        inflateStaffAndStudentValues()
 
         handleEvents()
     }
 
     private fun handleEvents() {
-        schoolInformation.onClick { }
+        schoolInformation.onClick {
+            findNavController().navigate(
+                R.id.action_settingsSchoolFragment_to_addSchoolFragment2
+            )
+        }
 
-        staffInformation.onClick {}
+        staffInformation.onClick {
 
-        studentAndClass.onClick { }
+        }
+
+        studentAndClass.onClick { findNavController().navigate(
+            R.id.action_settingsSchoolFragment_to_classInformationFragment
+        ) }
 
         adminProfile.onClick {
             findNavController().navigate(
@@ -90,17 +96,6 @@ class SettingsSchoolFragment : Fragment(), UiAction {
                 KEY_DESTINATION, GO_TO_LOGIN
             )
         }
-    }
-
-    private fun inflateStaffAndStudentValues() {
-        val totalStaff =
-            (viewModel.attendanceRegistry.numberOfMaleStaff + viewModel.attendanceRegistry.numberOfFemaleStaff).toString()
-
-        val totalStudents =
-            (viewModel.attendanceRegistry.numberOfMaleStudents + viewModel.attendanceRegistry.numberOfFemaleStudents).toString()
-
-        numberOfStaff.text = totalStaff
-        numberOfStudents.text = totalStudents
     }
 
 

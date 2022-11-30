@@ -12,10 +12,12 @@ import com.andela.eduteam14.android_app.core.data.models.CreateOrganizationReque
 import com.andela.eduteam14.android_app.core.data.models.CreateSchoolRequest
 import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
 import com.andela.eduteam14.android_app.core.data.models.LoginAdminRequest
+import com.google.firebase.firestore.Query
 import kotlin.math.log
 
 class MainRepositoryImpl(
     private val authManager: FirebaseAuthenticationManager,
+    private val fireStoreManager: FireStoreManager,
 ) : MainRepository {
 
     companion object {
@@ -37,84 +39,84 @@ class MainRepositoryImpl(
     }
 
     override fun createSchool(request: CreateSchoolRequest, onResult: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.createSchool(request, onResult)
     }
 
     override fun createOrganization(
         request: CreateOrganizationRequest,
         onResult: (Boolean) -> Unit
     ) {
-        TODO("Not yet implemented")
+        fireStoreManager.createOrganization(request, onResult)
     }
 
     override fun createAdmin(request: CreateAdminRequest, onResult: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.createAdmin(request, onResult)
     }
 
     override fun addAttendance(attendance: LocalDailyAttendance, onResult: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.addAttendance(attendance, onResult)
     }
 
     override fun findSchoolById(id: String, onResult: (RemoteSchool) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.findSchoolById(id, onResult)
     }
 
     override fun findSchoolByName(name: String, onResult: (RemoteSchool) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.findSchoolByName(name, onResult)
     }
 
-    override fun findAllSchools(onResult: (List<RemoteSchool>) -> Unit) {
-        TODO("Not yet implemented")
+    override fun findAllSchools(onResult: (Query) -> Unit) {
+        fireStoreManager.findAllSchools(onResult)
     }
 
     override fun findOrganizationByName(name: String, onResult: (RemoteOrganization) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.findOrganizationByName(name, onResult)
     }
 
     override fun findOrganizationById(id: String, onResult: (RemoteOrganization) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.findOrganizationById(id, onResult)
     }
 
-    override fun findAllOrganizations(onResult: (List<RemoteOrganization>) -> Unit) {
-        TODO("Not yet implemented")
+    override fun findAllOrganizations(onResult: (Query) -> Unit) {
+        fireStoreManager.findAllOrganizations(onResult)
     }
 
     override fun findAttendanceById(id: String, onResult: (RemoteDailyAttendance) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.findAttendanceById(id, onResult)
     }
 
     override fun findAttendanceBySchool(
         schoolName: String,
         onResult: (RemoteDailyAttendance) -> Unit
     ) {
-        TODO("Not yet implemented")
+        fireStoreManager.findAttendanceBySchool(schoolName, onResult)
     }
 
-    override fun findAllAttendance(onResult: (List<RemoteDailyAttendance>) -> Unit) {
-        TODO("Not yet implemented")
+    override fun findAllAttendance(onResult: (Query) -> Unit) {
+        fireStoreManager.findAllAttendance(onResult)
     }
 
     override fun findAdminById(id: String, onResult: (RemoteAdmin) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.findAdminById(id, onResult)
     }
 
     override fun findAdminByName(name: String, onResult: (RemoteAdmin) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.findAdminByName(name, onResult)
     }
 
-    override fun findAllAdmins(onResult: (List<RemoteAdmin>) -> Unit) {
-        TODO("Not yet implemented")
+    override fun findAllAdmins(onResult: (Query) -> Unit) {
+        fireStoreManager.findAllAdmins(onResult)
     }
 
     override fun removeSchoolById(id: String, onResult: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.removeSchoolById(id, onResult)
     }
 
     override fun removeOrganizationById(id: String, onResult: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.removeOrganizationById(id, onResult)
     }
 
     override fun removeAttendanceById(id: String, onResult: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
+        fireStoreManager.removeAttendanceById(id, onResult)
     }
 }

@@ -20,6 +20,13 @@ class AuthViewModel(
     val createAdminRequest get() = _createAdminRequest
     val loginAdminRequest get() = _loginAdminRequest
 
+
+    fun createAdmin(onResult: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            repository.createAdmin(_createAdminRequest, onResult)
+        }
+    }
+
     fun setEmail(email: String) {
         this._createAdminRequest.AdminEmail = email
     }
@@ -50,6 +57,10 @@ class AuthViewModel(
         viewModelScope.launch {
             repository.login(_loginAdminRequest, onResult)
         }
+    }
+
+    fun logout() {
+        viewModelScope.launch { repository.logout() }
     }
 }
 

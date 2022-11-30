@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MainApplication"
@@ -15,10 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_app"
         tools:targetApi="31">
-
-
-
-
+        <activity
+            android:name=".StudentAttendanceActivity"
+            android:exported="false" />
         <activity
             android:name=".core.ui.OrganizationBaseActivity"
             android:exported="false" />
@@ -36,9 +35,8 @@
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
-
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

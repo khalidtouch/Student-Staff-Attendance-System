@@ -8,6 +8,7 @@ import android.os.Looper
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
+import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.auth.AuthActivity
 import com.andela.eduteam14.android_app.core.ui.extensions.goto
@@ -27,7 +28,7 @@ class SplashActivity : AppCompatActivity(), UiAction {
         initViews()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            goto(AuthActivity::class.java)
+            goto(SchoolBaseActivity::class.java)
         }, 2000)
     }
 

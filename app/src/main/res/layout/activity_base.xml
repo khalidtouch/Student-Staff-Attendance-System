@@ -25,54 +25,55 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/BaseNavHostFragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/school_nav_graph" />
+            android:layout_height="match_parent">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/BaseExtendedFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/record"
-            android:textColor="?attr/colorPrimary"
-            app:backgroundTint="@color/gray"
-            app:icon="@drawable/ic_add"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:iconPadding="8dp"
-            app:iconTint="?attr/colorPrimary"
-            app:layout_constraintBottom_toTopOf="@+id/SchoolBottomNav"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:strokeColor="@color/gray" />
+            <include layout="@layout/content_school_base"/>
 
+        </androidx.core.widget.NestedScrollView>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/SchoolBottomNav"
-            style="@style/Widget.Material3.BottomNavigationView"
-            android:layout_width="0dp"
-            android:layout_height="72dp"
-            app:backgroundTint="@color/gray"
-            app:elevation="8dp"
-            app:itemIconSize="28dp"
-            app:itemIconTint="@color/grayDark"
-            app:labelVisibilityMode="unlabeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/menu_school_bottom_nav" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/BaseExtendedFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="92dp"
+        android:text="@string/record"
+        android:visibility="visible"
+        android:layout_gravity="bottom|end"
+        android:textColor="?attr/colorPrimary"
+        android:textStyle="bold"
+        app:backgroundTint="@color/gray"
+        app:icon="@drawable/ic_add"
+        app:iconPadding="8dp"
+        app:iconTint="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:strokeColor="@color/gray" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/SchoolBottomNav"
+        style="@style/Widget.Material3.BottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:visibility="visible"
+        app:backgroundTint="@color/gray"
+        app:elevation="8dp"
+        android:layout_gravity="bottom"
+        android:translationZ="100dp"
+        app:itemIconSize="28dp"
+        app:itemIconTint="@color/grayDark"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_school_bottom_nav" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

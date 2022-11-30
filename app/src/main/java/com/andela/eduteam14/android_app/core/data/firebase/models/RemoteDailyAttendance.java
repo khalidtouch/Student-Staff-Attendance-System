@@ -6,11 +6,19 @@ public class RemoteDailyAttendance {
     private String AttendanceId;
     private String AdminName;
     private long MaleStudentsPresent;
-    private long  FemaleStudentsPresent;
+    private long FemaleStudentsPresent;
     private long MaleStaffPresent;
     private long FemaleStaffPresent;
     private String DateModified;
     private String SchoolName;
+
+    private long MaleStudentsTotal;
+
+    private long FemaleStudentsTotal;
+
+    private long MaleStaffTotal;
+
+    private long FemaleStaffTotal;
 
 
     public RemoteDailyAttendance() {
@@ -19,7 +27,9 @@ public class RemoteDailyAttendance {
 
     public RemoteDailyAttendance(String attendanceId, String adminName, long maleStudentsPresent,
                                  long femaleStudentsPresent, long maleStaffPresent,
-                                 long femaleStaffPresent, String dateModified, String schoolName) {
+                                 long femaleStaffPresent, String dateModified, String schoolName,
+                                 long maleStudentsTotal, long femaleStudentsTotal,
+                                 long maleStaffTotal, long femaleStaffTotal) {
         AttendanceId = attendanceId;
         AdminName = adminName;
         MaleStudentsPresent = maleStudentsPresent;
@@ -28,6 +38,42 @@ public class RemoteDailyAttendance {
         FemaleStaffPresent = femaleStaffPresent;
         DateModified = dateModified;
         SchoolName = schoolName;
+        MaleStudentsTotal = maleStudentsTotal;
+        FemaleStudentsTotal = femaleStudentsTotal;
+        MaleStaffTotal = maleStaffTotal;
+        FemaleStaffTotal = femaleStaffTotal;
+    }
+
+    public long getMaleStudentsTotal() {
+        return MaleStudentsTotal;
+    }
+
+    public void setMaleStudentsTotal(long maleStudentsTotal) {
+        MaleStudentsTotal = maleStudentsTotal;
+    }
+
+    public long getFemaleStudentsTotal() {
+        return FemaleStudentsTotal;
+    }
+
+    public void setFemaleStudentsTotal(long femaleStudentsTotal) {
+        FemaleStudentsTotal = femaleStudentsTotal;
+    }
+
+    public long getMaleStaffTotal() {
+        return MaleStaffTotal;
+    }
+
+    public void setMaleStaffTotal(long maleStaffTotal) {
+        MaleStaffTotal = maleStaffTotal;
+    }
+
+    public long getFemaleStaffTotal() {
+        return FemaleStaffTotal;
+    }
+
+    public void setFemaleStaffTotal(long femaleStaffTotal) {
+        FemaleStaffTotal = femaleStaffTotal;
     }
 
     public String getSchoolName() {
@@ -103,7 +149,11 @@ public class RemoteDailyAttendance {
                 MaleStaffPresent,
                 FemaleStaffPresent,
                 DateModified,
-                SchoolName
+                SchoolName,
+                MaleStudentsTotal,
+                FemaleStudentsTotal,
+                MaleStaffTotal,
+                FemaleStaffTotal
         );
     }
 }

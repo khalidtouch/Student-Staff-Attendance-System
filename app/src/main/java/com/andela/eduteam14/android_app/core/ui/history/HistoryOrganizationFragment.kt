@@ -34,8 +34,7 @@ class HistoryOrganizationFragment : Fragment(), UiAction {
 
     private val viewModel: OrganizationViewModel by viewModels {
         OrganizationViewModelFactory(
-            (activity as OrganizationBaseActivity).coreComponent.registry,
-            (activity as OrganizationBaseActivity).coreComponent.dataSource,
+            (activity as OrganizationBaseActivity).coreComponent.repository
         )
     }
 
@@ -59,18 +58,18 @@ class HistoryOrganizationFragment : Fragment(), UiAction {
         initViews()
 
 
-        historyAdapter = HistoryOrganizationAdapter()
-
-
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = historyAdapter
-        }
-
-        if(viewModel.entries.isEmpty()) hideData() else {
-            historyAdapter.submitList(viewModel.history)
-            showData()
-        }
+//        historyAdapter = HistoryOrganizationAdapter()
+//
+//
+//        recyclerView.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = historyAdapter
+//        }
+//
+//        if(viewModel.entries.isEmpty()) hideData() else {
+//            historyAdapter.submitList(viewModel.history)
+//            showData()
+//        }
 
 
     }

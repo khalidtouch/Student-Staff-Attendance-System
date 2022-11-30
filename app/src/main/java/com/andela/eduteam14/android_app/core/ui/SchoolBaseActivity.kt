@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.andela.eduteam14.android_app.MainApplication
 import com.andela.eduteam14.android_app.R
@@ -45,6 +46,13 @@ class SchoolBaseActivity : AppCompatActivity(), UiAction {
                     as NavHostFragment
 
         navController = navHostFragment.navController
+        val appBarConfig = AppBarConfiguration(
+            topLevelDestinationIds = setOf(),
+            fallbackOnNavigateUpListener = ::onSupportNavigateUp
+        )
+
+        val toolbar = binding?.BaseToolbar!!
+        toolbar.setupWithNavController(navController, appBarConfig)
         navView.setupWithNavController(navController)
 
 

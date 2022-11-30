@@ -98,7 +98,7 @@
     <string name="hint_male_student">Male Student</string>
     <!-- This will need to be update with code -->
     <string name="date">March, 22, 2022</string>
-    <string name="female_staff">Female Staff</string>
+    <string name="female_staff">Female Staff %1$s</string>
     <string name="hint_male_staff">Male Staff</string>
     <string name="grade">Grade 10</string>
     <string name="finish">Click to finish</string>
@@ -135,4 +135,5 @@
     <string name="previous">Previous</string>
     <string name="story_no_data">No attendance information now</string>
     <string name="sent_by">Delivered by %1$s</string>
+    <string name="add_more">Add More</string>
 </resources>

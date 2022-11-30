@@ -4,28 +4,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.andela.eduteam14.android_app.core.data.mock.AttendanceDataSource
 import com.andela.eduteam14.android_app.core.data.mock.AttendanceRegistry
+import com.andela.eduteam14.android_app.core.data.repository.MainRepository
 
 class OrganizationViewModel(
-    private val registry: AttendanceRegistry,
-    private val datasource: AttendanceDataSource,
+    private val repository: MainRepository,
 ) : ViewModel() {
-    val entries = datasource.allDailies
 
-    val history = datasource.history
-
-    val attendanceRegistry = registry
 
 }
 
 
 @Suppress("UNCHECKED_CAST")
 class OrganizationViewModelFactory(
-    private val registry: AttendanceRegistry,
-    private val datasource: AttendanceDataSource,
+    private val repository: MainRepository,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(OrganizationViewModel::class.java)) {
-            OrganizationViewModel(registry, datasource) as T
+            OrganizationViewModel(repository,) as T
         } else throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

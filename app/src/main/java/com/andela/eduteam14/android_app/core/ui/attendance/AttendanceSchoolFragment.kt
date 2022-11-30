@@ -35,16 +35,10 @@ class AttendanceSchoolFragment : Fragment(), UiAction {
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
-            (activity as SchoolBaseActivity).coreComponent.registry,
-            (activity as SchoolBaseActivity).coreComponent.dataSource,
+            (activity as SchoolBaseActivity).coreComponent.repository,
         )
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        registry = (activity as SchoolBaseActivity).coreComponent.registry
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,15 +58,15 @@ class AttendanceSchoolFragment : Fragment(), UiAction {
 
         (activity as SchoolBaseActivity).showFab()
 
-        homeAdapter = SchoolHomeAdapter(registry)
-
-
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = homeAdapter
-        }
-
-        homeAdapter.submitList(viewModel.entries)
+//        homeAdapter = SchoolHomeAdapter(registry)
+//
+//
+//        recyclerView.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = homeAdapter
+//        }
+//
+//        homeAdapter.submitList(viewModel.entries)
 
         (activity as SchoolBaseActivity).recordFab.onClick { loadDialog() }
 

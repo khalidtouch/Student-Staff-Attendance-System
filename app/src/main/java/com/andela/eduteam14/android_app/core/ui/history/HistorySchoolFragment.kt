@@ -29,8 +29,7 @@ class HistorySchoolFragment : Fragment(), UiAction {
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
-            (activity as SchoolBaseActivity).coreComponent.registry,
-            (activity as SchoolBaseActivity).coreComponent.dataSource,
+            (activity as SchoolBaseActivity).coreComponent.repository
         )
     }
 
@@ -55,18 +54,18 @@ class HistorySchoolFragment : Fragment(), UiAction {
 
         (activity as SchoolBaseActivity).hideFab()
 
-        historyAdapter = HistorySchoolAdapter()
-
-
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = historyAdapter
-        }
-
-        if (viewModel.history.isEmpty()) hideData() else {
-            historyAdapter.submitList(viewModel.history)
-            showData()
-        }
+//        historyAdapter = HistorySchoolAdapter()
+//
+//
+//        recyclerView.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = historyAdapter
+//        }
+//
+//        if (viewModel.history.isEmpty()) hideData() else {
+//            historyAdapter.submitList(viewModel.history)
+//            showData()
+//        }
 
 
     }

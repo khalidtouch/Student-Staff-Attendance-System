@@ -8,73 +8,64 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.andela.eduteam14.android_app.core.data.mock.AttendanceDataSource
 import com.andela.eduteam14.android_app.core.data.mock.AttendanceRegistry
+import com.andela.eduteam14.android_app.core.data.models.CreateSchoolRequest
+import com.andela.eduteam14.android_app.core.data.models.DailyAttendanceRequest
 import com.andela.eduteam14.android_app.core.data.models.LocalClassAttendance
+import com.andela.eduteam14.android_app.core.data.repository.MainRepository
 import kotlinx.coroutines.launch
 
 class SchoolViewModel(
-    private val registry: AttendanceRegistry,
-    private val datasource: AttendanceDataSource,
+    private val repository: MainRepository,
 ) : ViewModel() {
-    val entries = datasource.allDailies
 
-    val history = datasource.history
+    private var _createSchoolRequest: CreateSchoolRequest = CreateSchoolRequest()
 
-    val attendanceRegistry = registry
+    private var _AttendanceRequest: DailyAttendanceRequest = DailyAttendanceRequest()
 
-    var currentClass = 1
+    val createSchoolRequest get() = _createSchoolRequest
 
-    var classHasNext = currentClass < registry.numberOfClasses
 
-    var classHasPrevious = currentClass > 1 && currentClass <= registry.numberOfClasses
 
-    var isLowestClass = currentClass == 1
+    fun addAttendance() {
 
-    var isHighestClass = currentClass == registry.numberOfClasses
+    }
+    fun setSchoolCode(code: String) {
+          this._createSchoolRequest.SchoolCode = code
+    }
 
-    private var _classAttendanceList: ArrayList<LocalClassAttendance> =
-        ArrayList(registry.numberOfClasses)
+    fun setOrganizationId(id: String) {
+        this._createSchoolRequest.OrganizationId = id
+    }
 
-    fun initAttendanceList() {
+    fun setSchoolName(name: String) {
+        this._createSchoolRequest.SchoolName = name
+    }
+
+    fun setAdminName(name: String) {
+        this._createSchoolRequest.AdminName = name
+    }
+
+    fun setAddress(address: String) {
+        this._createSchoolRequest.Address = address
+    }
+
+    fun setSchoolLocation(location: String) {
+        this._createSchoolRequest.SchoolLocation = location
+    }
+
+    fun setDateModified(date: String) {
+        this._createSchoolRequest.DateModified = date
+    }
+
+
+    fun createSchool(onResult: (Boolean) -> Unit) {
         viewModelScope.launch {
-            val container = arrayListOf<LocalClassAttendance>()
-            for (i in 0 until registry.numberOfClasses) {
-                container.add(
-                    LocalClassAttendance(
-                        classId = i + 1,
-                        className = "Grade ${i + 1}",
-                    )
-                )
-            }
-            _classAttendanceList.addAll(container)
+            repository.createSchool(_createSchoolRequest, onResult)
         }
     }
 
-    fun getClassAttendanceById(id: Int, onResult: (LocalClassAttendance) -> Unit) {
-        val current = _classAttendanceList.filter { it.classId == id }
-        onResult(current[0])
-    }
 
-    fun next(onResult: (LocalClassAttendance) -> Unit, onCommit: () -> Unit) {
-        if (classHasNext) {
-            currentClass += 1
-            getClassAttendanceById(currentClass, onResult)
-        }
 
-        if (isHighestClass) {
-            onCommit()
-        }
-    }
-
-    fun previous(onResult: (LocalClassAttendance) -> Unit, onApproachLastClass: () -> Unit) {
-        if (classHasPrevious) {
-            currentClass -= 1
-            getClassAttendanceById(currentClass, onResult)
-        }
-
-        if (isLowestClass) {
-            onApproachLastClass()
-        }
-    }
 
 
 }
@@ -82,12 +73,11 @@ class SchoolViewModel(
 
 @Suppress("UNCHECKED_CAST")
 class SchoolViewModelFactory(
-    private val registry: AttendanceRegistry,
-    private val datasource: AttendanceDataSource,
+   private val repository: MainRepository,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(SchoolViewModel::class.java)) {
-            SchoolViewModel(registry, datasource) as T
+            SchoolViewModel(repository,) as T
         } else throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

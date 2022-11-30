@@ -15,84 +15,12 @@ import com.andela.eduteam14.android_app.core.data.firebase.manager.firestore.Fir
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteDailyAttendance
 import com.andela.eduteam14.android_app.core.data.mock.AttendanceRegistry
 import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
+import com.andela.eduteam14.android_app.core.domain.usecase.AbsentUseCase
 import com.andela.eduteam14.android_app.core.ui.extensions.onClick
 import com.andela.eduteam14.android_app.databinding.DailyAttendanceItemBinding
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Query
 
-class(
-    private val registry: AttendanceRegistry,
-) : ListAdapter<LocalDailyAttendance, SchoolHomeAdapter.ViewHolder>(DiffUtilCallback()) {
-
-    inner class ViewHolder(private val itemBinding: DailyAttendanceItemBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
-
-        fun bind(attendance: LocalDailyAttendance) {
-            itemBinding.apply {
-
-                totalMalesStaff.text = ""
-
-                totalFemalesStaff.text = ""
-
-                totalMalesStudent.text = ""
-
-                totalFemalesStudent.text = ""
-
-                time.text = ""
-
-                SchoolName.text = ""
-
-                MaleStaffPresent.text = ""
-                FemaleStaffPresent.text = ""
-
-                MaleStudentPresent.text = ""
-
-                FemaleStudentPresent.text = ""
-
-                MaleStaffAbsent.text = ""
-
-                FemaleStaffAbsent.text = ""
-
-
-                MaleStudentAbsent.text = ""
-
-                FemaleStudentAbsent.text = ""
-            }
-        }
-    }
-
-    private class DiffUtilCallback :
-        DiffUtil.ItemCallback<LocalDailyAttendance>() {
-        override fun areItemsTheSame(
-            oldItem: LocalDailyAttendance,
-            newItem: LocalDailyAttendance
-        ): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(
-            oldItem: LocalDailyAttendance,
-            newItem: LocalDailyAttendance
-        ): Boolean {
-            return oldItem.AttendanceId == newItem.AttendanceId
-        }
-
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = DailyAttendanceItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false,
-        )
-
-        return ViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
-}
 
 class SchoolHomeAdapter(
     private val context: Context,
@@ -100,6 +28,8 @@ class SchoolHomeAdapter(
     private val onSelectAttendance: (LocalDailyAttendance) -> Unit,
 ) :
     FireStoreAdapter<SchoolHomeAdapter.ViewHolder>(query) {
+
+    val absentCase = AbsentUseCase()
 
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -133,15 +63,82 @@ class SchoolHomeAdapter(
             time.text = attendance?.dateModified
 
             schoolName.text = attendance?.schoolName
+
             maleStudentPresent.text =
                 context.getString(R.string.male_student, attendance?.maleStudentsPresent.toString())
 
             femaleStudentPresent.text =
-                context.getString(R.string.female_student, attendance?.femaleStudentsPresent.toString())
+                context.getString(
+                    R.string.female_student,
+                    attendance?.femaleStudentsPresent.toString()
+                )
 
-            
 
-            container.onClick { onSelectAttendance(attendance?.mapToLocal()!!) }
+            maleStudentAbsent.text =
+                context.getString(
+                    R.string.male_student, absentCase(
+                        attendance?.maleStudentsPresent!!,
+                        attendance?.maleStudentsTotal!!
+                    ).toString()
+                )
+
+            femaleStudentAbsent.text =
+                context.getString(
+                    R.string.female_student, absentCase(
+                        attendance.femaleStudentsPresent,
+                        attendance.femaleStudentsTotal
+                    ).toString()
+                )
+
+            maleStaffPresent.text =
+                context.getString(
+                    R.string.male_staff, attendance.maleStaffPresent.toString()
+                )
+
+            femaleStaffPresent.text =
+                context.getString(
+                    R.string.female_staff, attendance.femaleStaffPresent.toString()
+                )
+
+
+            maleStaffAbsent.text =
+                context.getString(
+                    R.string.male_staff, absentCase(
+                        attendance.maleStaffPresent,
+                        attendance.maleStaffTotal
+                    ).toString()
+                )
+
+            femaleStaffAbsent.text =
+                context.getString(
+                    R.string.female_staff, absentCase(
+                        attendance.femaleStaffPresent,
+                        attendance.femaleStaffTotal
+                    ).toString()
+                )
+
+
+            totalMaleStudent.text =
+                context.getString(
+                    R.string.male_student, attendance.maleStudentsTotal.toString()
+                )
+
+            totalFemaleStudent.text =
+                context.getString(
+                    R.string.female_student, attendance.femaleStudentsTotal.toString()
+                )
+
+            totalMaleStaff.text =
+                context.getString(
+                    R.string.male_staff, attendance.maleStaffTotal.toString()
+                )
+
+            totalFemaleStaff.text =
+                context.getString(
+                    R.string.female_staff, attendance.femaleStaffTotal.toString()
+                )
+
+            container.onClick { onSelectAttendance(attendance.mapToLocal()!!) }
         }
     }
 
