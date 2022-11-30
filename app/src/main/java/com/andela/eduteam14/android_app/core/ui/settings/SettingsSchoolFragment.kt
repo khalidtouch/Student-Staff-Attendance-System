@@ -29,7 +29,6 @@ class SettingsSchoolFragment : Fragment(), UiAction {
 
     private val binding get() = _binding
 
-    private lateinit var numberOfStudents: TextView
     private lateinit var numberOfStaff: TextView
     private lateinit var logout: Button
     private lateinit var schoolInformation: LinearLayout
@@ -80,9 +79,11 @@ class SettingsSchoolFragment : Fragment(), UiAction {
 
         }
 
-        studentAndClass.onClick { findNavController().navigate(
-            R.id.action_settingsSchoolFragment_to_classInformationFragment
-        ) }
+        studentAndClass.onClick {
+            findNavController().navigate(
+                R.id.action_settingsSchoolFragment_to_classInformationFragment
+            )
+        }
 
         adminProfile.onClick {
             findNavController().navigate(
@@ -100,7 +101,6 @@ class SettingsSchoolFragment : Fragment(), UiAction {
 
 
     override fun initViews() {
-        numberOfStudents = binding?.NumberOfStudents!!
         numberOfStaff = binding?.NumberOfStaff!!
         adminProfile = binding?.AdminProfile!!
         schoolInformation = binding?.SchoolInformation!!

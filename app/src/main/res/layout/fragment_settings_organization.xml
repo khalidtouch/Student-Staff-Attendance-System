@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/Heading"
         style="@style/TextAppearance.Material3.LabelMedium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/Heading">
 
         <TextView
             style="@style/TextAppearance.Material3.TitleLarge"

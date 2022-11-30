@@ -28,33 +28,56 @@
         android:name="com.andela.eduteam14.android_app.core.ui.settings.SettingsSchoolFragment"
         android:label="SettingsSchoolFragment" >
         <action
-            android:id="@+id/action_settingsSchoolFragment_to_classInformationFragment"
-            app:destination="@id/classInformationFragment" />
-        <action
             android:id="@+id/action_settingsSchoolFragment_to_addSchoolFragment2"
             app:destination="@id/addSchoolFragment2" />
         <action
             android:id="@+id/action_settingsSchoolFragment_to_adminProfileFragment"
             app:destination="@id/adminProfileFragment" />
+        <action
+            android:id="@+id/action_settingsSchoolFragment_to_classInformationFragment"
+            app:destination="@id/classInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/staffAttendanceFragment"
-        android:name="com.andela.eduteam14.android_app.core.ui.attendance.StaffAttendanceFragment"
-        android:label="StaffAttendanceFragment" />
+        android:name="com.andela.eduteam14.android_app.core.ui.attendance.staff.StaffAttendanceFragment"
+        android:label="StaffAttendanceFragment" >
+        <action
+            android:id="@+id/action_staffAttendanceFragment_to_homeSchoolFragment"
+            app:destination="@id/homeSchoolFragment" />
+    </fragment>
     <fragment
         android:id="@+id/studentAttendanceFragment"
         android:name="com.andela.eduteam14.android_app.core.ui.attendance.StudentAttendanceLastFragment"
-        android:label="StudentAttendanceFragment" />
-    <fragment
-        android:id="@+id/classInformationFragment"
-        android:name="com.andela.eduteam14.android_app.core.ui.classinformation.ClassInformationFragment"
-        android:label="ClassInformationFragment" />
+        android:label="StudentAttendanceFragment" >
+        <action
+            android:id="@+id/action_studentAttendanceFragment_to_homeSchoolFragment"
+            app:destination="@id/homeSchoolFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addSchoolFragment2"
         android:name="com.andela.eduteam14.android_app.core.ui.addschool.AddSchoolFragment"
-        android:label="AddSchoolFragment" />
+        android:label="AddSchoolFragment" >
+        <action
+            android:id="@+id/action_addSchoolFragment2_to_homeSchoolFragment"
+            app:destination="@id/homeSchoolFragment" />
+        <action
+            android:id="@+id/action_addSchoolFragment2_to_homeSchoolFragment2"
+            app:destination="@id/homeSchoolFragment" />
+    </fragment>
     <fragment
         android:id="@+id/adminProfileFragment"
         android:name="com.andela.eduteam14.android_app.core.ui.profile.AdminProfileFragment"
-        android:label="AdminProfileFragment" />
+        android:label="AdminProfileFragment" >
+        <action
+            android:id="@+id/action_adminProfileFragment_to_homeSchoolFragment"
+            app:destination="@id/homeSchoolFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/classInformationFragment"
+        android:name="com.andela.eduteam14.android_app.core.ui.classinformation.ClassInformationFragment"
+        android:label="ClassInformationFragment" >
+        <action
+            android:id="@+id/action_classInformationFragment_to_homeSchoolFragment"
+            app:destination="@id/homeSchoolFragment" />
+    </fragment>
 </navigation>

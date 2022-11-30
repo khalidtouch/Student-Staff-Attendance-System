@@ -386,8 +386,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1036" />
-                            <option name="y" value="10" />
+                            <option name="x" value="1062" />
+                            <option name="y" value="-63" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -417,18 +417,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="loginFragment2">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="946" />
-                            <option name="y" value="-350" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="settingsSchoolFragment">
                     <value>
                       <LayoutPositions>
@@ -446,11 +434,6 @@
                               </value>
                             </entry>
                             <entry key="action_settingsSchoolFragment_to_adminProfileFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_settingsSchoolFragment_to_classInformationFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

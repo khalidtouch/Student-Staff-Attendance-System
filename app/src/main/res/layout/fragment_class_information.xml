@@ -6,7 +6,7 @@
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/Heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -22,50 +22,75 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
+        android:imeOptions="actionNext"
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="@string/hint_class_name"
         android:minHeight="48dp" />
 
     <EditText
-        android:id="@+id/NumberOfStudents"
+        android:id="@+id/NumberOfMaleStudents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:imeOptions="actionDone"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
-        android:hint="@string/hint_number_of_students"
+        android:hint="@string/hint_number_of_male_students"
         android:inputType="numberDecimal"
         android:minHeight="48dp" />
 
-    <FrameLayout
+
+    <EditText
+        android:id="@+id/NumberOfFemaleStudents"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:imeOptions="actionDone"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:hint="@string/hint_number_of_female_students"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp" />
 
-        <Button
-            android:id="@+id/btnCommit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:visibility="invisible"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="220dp"
-            android:layout_marginEnd="15dp"
-            android:text="@string/commit" />
+    <TextView
+        android:id="@+id/ClassCounter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/class_counter"
+        android:layout_marginTop="72dp"
+        android:padding="16dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        style="@style/TextAppearance.Material3.HeadlineLarge"
+        android:textSize="54sp"/>
 
-        <Button
-            android:id="@+id/btnAddMore"
-            android:layout_width="match_parent"
-            android:visibility="visible"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="220dp"
-            android:layout_marginEnd="15dp"
-            android:text="@string/add_more" />
 
-    </FrameLayout>
+    <Button
+        android:id="@+id/btnCommit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="invisible"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/commit"
+      />
+
+
+    <Button
+        android:id="@+id/btnAddMore"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="-52dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/add_more" />
 
 
 

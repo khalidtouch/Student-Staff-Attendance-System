@@ -7,6 +7,14 @@ import androidx.core.content.edit
 const val USER_SESSION = "user_session"
 const val USER_SESSION_STATE = "user_session_state"
 
+const val KEY_STUDENT_MALE = "key_student_male"
+
+const val KEY_STUDENT_FEMALE = "key_student_female"
+
+const val KEY_MALE_STAFF = "key_male_staff"
+
+const val KEY_FEMALE_STAFF = "key_female_staff"
+
 class PreferenceRepository private constructor(context: Context) {
     private val pref =
         context.applicationContext.getSharedPreferences(USER_SESSION, Context.MODE_PRIVATE)
@@ -25,6 +33,44 @@ class PreferenceRepository private constructor(context: Context) {
 
     fun stain() {
         pref.edit { putString(USER_SESSION_STATE, UserSessionState.DIRTY.state) }
+    }
+
+    fun saveTotalMaleStudents(number: Long) {
+        pref.edit {
+            putLong(KEY_STUDENT_MALE, number)
+        }
+    }
+
+    fun retrieveTotalMaleStudents(): Long {
+        return pref.getLong(KEY_STUDENT_MALE, 0L)
+    }
+
+    fun saveTotalFemaleStudents(number: Long) {
+        pref.edit {
+            putLong(KEY_STUDENT_FEMALE, number)
+        }
+    }
+
+    fun retrieveTotalFemaleStudents(): Long {
+        return pref.getLong(KEY_STUDENT_FEMALE, 0L)
+    }
+
+
+    fun saveMaleStaffPresent(number: Long) {
+        pref.edit { putLong(KEY_MALE_STAFF, number) }
+    }
+
+    fun retrieveMaleStaff(): Long {
+        return pref.getLong(KEY_MALE_STAFF, 0L)
+    }
+
+
+    fun saveFemaleStaffPresent(number: Long) {
+        pref.edit { putLong(KEY_FEMALE_STAFF, number) }
+    }
+
+    fun retrieveFemaleStaff(): Long {
+        return pref.getLong(KEY_FEMALE_STAFF, 0L)
     }
 
 

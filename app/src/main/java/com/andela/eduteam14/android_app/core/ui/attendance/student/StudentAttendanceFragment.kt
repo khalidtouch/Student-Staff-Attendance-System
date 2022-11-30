@@ -61,6 +61,7 @@ class StudentAttendanceFragment : Fragment(), UiAction {
 
 
     private fun bind(bundle: Bundle) {
+        val currentPage = bundle.getInt(KEY_CLASS_POSITION)
 
     }
 

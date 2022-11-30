@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/dateModified"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -28,8 +28,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:hint="@string/hint_female_staff"
         android:textColorHint="?attr/colorPrimary"
         app:boxStrokeColor="?attr/colorPrimary"
@@ -38,13 +38,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/dateModified">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/StaffAttendanceFragmentFemaleEdit"
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/StaffAttendanceFragmentFemaleEdit"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
             android:textColor="?attr/colorPrimary"
@@ -60,9 +60,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/hint_male_staff"
-        android:layout_marginTop="16dp"
         android:textColorHint="?attr/colorPrimary"
         app:boxStrokeColor="?attr/colorPrimary"
         app:boxStrokeWidth="1dp"
@@ -73,8 +73,8 @@
         app:layout_constraintTop_toBottomOf="@+id/StaffAttendanceFragmentFemale">
 
         <com.google.android.material.textfield.TextInputEditText
-            style="@style/TextAppearance.AppCompat.Medium"
             android:id="@+id/StaffAttendanceFragmentMaleEdit"
+            style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
@@ -88,18 +88,20 @@
 
 
     <Button
-        android:id="@+id/RegisterFragmentRegisterBtn"
+        android:id="@+id/StaffAttendanceFragmentCommitBtn"
         style="@style/Widget.Material3.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:text="@string/commit"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StaffAttendanceFragmentMale" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline15"
@@ -114,8 +116,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="50dp" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

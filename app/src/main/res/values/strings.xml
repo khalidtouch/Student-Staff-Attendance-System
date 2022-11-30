@@ -126,7 +126,8 @@
     <string name="username">Username</string>
     <string name="phone_number">Phone number</string>
     <string name="hint_class_name">Class name</string>
-    <string name="hint_number_of_students">Number of students</string>
+    <string name="hint_number_of_male_students">Number of male students</string>
+    <string name="hint_number_of_female_students">Number of female students</string>
     <string name="enter_your_class">Enter your Class</string>
     <string name="join_an_organization">Join an organization</string>
     <string name="join">Join</string>
@@ -135,5 +136,8 @@
     <string name="previous">Previous</string>
     <string name="story_no_data">No attendance information now</string>
     <string name="sent_by">Delivered by %1$s</string>
-    <string name="add_more">Add More</string>
+    <string name="add_more">Add</string>
+    <string name="classLevel">Grade %1$s</string>
+    <string name="class_counter">1</string>
+    <string name="completed">Completed</string>
 </resources>
