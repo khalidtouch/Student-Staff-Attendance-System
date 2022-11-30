@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -17,7 +16,6 @@ import com.andela.eduteam14.android_app.core.data.models.CreateClassRequest
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
-import com.andela.eduteam14.android_app.core.ui.attendance.student.KEY_CLASS_POSITION
 import com.andela.eduteam14.android_app.core.ui.extensions.onChange
 import com.andela.eduteam14.android_app.core.ui.extensions.onClick
 import com.andela.eduteam14.android_app.core.ui.extensions.snackBar
@@ -177,13 +175,6 @@ class ClassInformationFragment : Fragment(), UiAction {
         _binding = null
     }
 
-    private fun bind(bundle: Bundle) {
-        val currentPage = bundle.getInt(KEY_CLASS_POSITION)
-
-        if (currentPage < 15) {
-            hideCommit()
-        } else showCommit()
-    }
 
     override fun onDestroy() {
         onDestroyComponents()

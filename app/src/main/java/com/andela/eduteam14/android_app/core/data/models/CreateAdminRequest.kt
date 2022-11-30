@@ -7,6 +7,7 @@ data class CreateAdminRequest(
     var AdminEmail: String = "",
     var Password: String = "",
     var ConfirmPassword: String = "",
+    var Account: String = "",
 ) {
     fun isValid(): Boolean {
         val invalid = AdminEmail.isEmpty() || Password.isEmpty() || Password != ConfirmPassword
@@ -16,7 +17,7 @@ data class CreateAdminRequest(
 
     fun toModel(): LocalAdmin {
         return LocalAdmin(
-            AdminId, AdminName, AdminEmail
+            AdminId, AdminName, AdminEmail, Account,
         )
     }
 

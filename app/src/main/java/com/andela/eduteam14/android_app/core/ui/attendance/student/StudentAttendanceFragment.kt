@@ -34,7 +34,7 @@ class StudentAttendanceFragment : Fragment(), UiAction {
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
-            (activity as StudentAttendanceActivity).coreComponent.repository
+            (activity as SchoolBaseActivity).coreComponent.repository
         )
     }
 
@@ -52,18 +52,10 @@ class StudentAttendanceFragment : Fragment(), UiAction {
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
-        arguments?.takeIf { it.containsKey(KEY_CLASS_POSITION) }?.apply {
-            bind(this)
-        }
 
 
     }
 
-
-    private fun bind(bundle: Bundle) {
-        val currentPage = bundle.getInt(KEY_CLASS_POSITION)
-
-    }
 
 
     override fun initViews() {

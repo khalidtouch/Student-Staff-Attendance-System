@@ -5,6 +5,7 @@ import androidx.core.content.edit
 
 
 const val USER_SESSION = "user_session"
+
 const val USER_SESSION_STATE = "user_session_state"
 
 const val KEY_STUDENT_MALE = "key_student_male"

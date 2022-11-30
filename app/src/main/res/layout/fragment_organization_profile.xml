@@ -16,9 +16,12 @@
         android:textColor="@color/LocalBrown"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:layout_margin="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
 
     <com.google.android.material.textfield.TextInputLayout
