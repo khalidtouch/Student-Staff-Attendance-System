@@ -9,27 +9,34 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.andela.eduteam14.android_app.R
-import com.andela.eduteam14.android_app.core.data.models.LocalClassAttendance
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.andela.eduteam14.android_app.core.data.firebase.manager.firestore.FireStoreManagerImpl
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
-import com.andela.eduteam14.android_app.core.domain.usecase.ChooseOrganizationDialogUseCase
+import com.andela.eduteam14.android_app.core.domain.usecase.ChooseMemberDialogUseCase
 import com.andela.eduteam14.android_app.core.domain.usecase.DateTodayUseCase
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.extensions.onChange
 import com.andela.eduteam14.android_app.core.ui.extensions.onClick
+import com.andela.eduteam14.android_app.core.ui.home.SchoolHomeAdapter
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModel
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModelFactory
+import com.andela.eduteam14.android_app.databinding.FragmentAttendanceSchoolBinding
 import com.andela.eduteam14.android_app.databinding.FragmentStudentAttendanceBinding
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlin.properties.Delegates
 
-class StudentAttendanceFragment : Fragment(), UiAction {
+class TakeStudentAttendanceFragment : Fragment(), UiAction {
+    private var _binding: FragmentStudentAttendanceBinding? = null
+
+    private val binding get() = _binding
 
     private lateinit var submit: Button
+
     private lateinit var date: TextView
-    private var _binding: FragmentStudentAttendanceBinding? = null
-    private val binding get() = _binding
 
     private lateinit var next: Button
     private lateinit var previous: Button
@@ -50,6 +57,7 @@ class StudentAttendanceFragment : Fragment(), UiAction {
         )
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,15 +70,20 @@ class StudentAttendanceFragment : Fragment(), UiAction {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initViews()
 
-        viewModel.setMaxClasses(pref)
+        pref = PreferenceRepository.getInstance(requireContext())
 
         maxClasses = viewModel.maxClasses
 
+        viewModel.setMaxClasses(pref)
+
+
+
         enableNextNotPrevious()
 
-        pref = PreferenceRepository.getInstance(requireContext())
+
 
         viewModel.setMaxClasses(pref)
 
@@ -78,10 +91,10 @@ class StudentAttendanceFragment : Fragment(), UiAction {
 
         handleInput()
 
+
     }
 
     private fun handleInput() {
-
         date.text = today()
 
         var maleStudents = "0"
@@ -96,30 +109,29 @@ class StudentAttendanceFragment : Fragment(), UiAction {
 
         next.onClick {
 
-           if(maleStudents.isNotEmpty() && femaleStudents.isNotEmpty()) {
-               clearField()
+            if(maleStudents.isNotEmpty() && femaleStudents.isNotEmpty()) {
+                clearField()
 
-               viewModel.updateMaleStudents(maleStudents)
+                viewModel.updateMaleStudents(maleStudents)
 
-               viewModel.updateFemaleStudents(femaleStudents)
+                viewModel.updateFemaleStudents(femaleStudents)
 
-               viewModel.addInstanceToPages(
-                   viewModel.currentClass.toString(),
-                   maleStudents,
-                   femaleStudents,
-               )
+                viewModel.addInstanceToPages(
+                    viewModel.currentClass.toString(),
+                    maleStudents,
+                    femaleStudents,
+                )
 
-               viewModel.currentClass += 1
+                viewModel.currentClass += 1
 
-               manageButton()
-           }
+                manageButton()
+            }
 
         }
 
         previous.onClick {
 
         }
-
 
     }
 
@@ -149,6 +161,11 @@ class StudentAttendanceFragment : Fragment(), UiAction {
         }
     }
 
+    private fun enableNextNotPrevious() {
+        previous.isEnabled = false
+        next.isEnabled = false
+    }
+
     private fun enablePreviousNext() {
         previous.isEnabled = true
         next.isEnabled = true
@@ -168,11 +185,6 @@ class StudentAttendanceFragment : Fragment(), UiAction {
     private fun showBoth() {
         previous.visibility = View.VISIBLE
         next.visibility = View.VISIBLE
-    }
-
-    private fun enableNextNotPrevious() {
-        previous.isEnabled = false
-        next.isEnabled = false
     }
 
 

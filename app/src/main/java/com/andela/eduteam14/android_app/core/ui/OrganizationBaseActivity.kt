@@ -78,7 +78,7 @@ class OrganizationBaseActivity : AppCompatActivity(), UiAction {
 
     }
 
-    private fun jumpTo(id: Int) {
+     fun jumpTo(id: Int) {
         navController.navigateUp()
         navController.navigate(id)
     }

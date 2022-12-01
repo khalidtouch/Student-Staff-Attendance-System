@@ -13,11 +13,11 @@
         android:name="com.andela.eduteam14.android_app.core.ui.attendance.AttendanceSchoolFragment"
         android:label="AttendanceSchoolFragment" >
         <action
-            android:id="@+id/action_attendanceSchoolFragment_to_studentAttendanceFragment"
-            app:destination="@id/studentAttendanceFragment" />
-        <action
             android:id="@+id/action_attendanceSchoolFragment_to_staffAttendanceFragment"
             app:destination="@id/staffAttendanceFragment" />
+        <action
+            android:id="@+id/action_attendanceSchoolFragment_to_takeStudentAttendanceFragment"
+            app:destination="@id/takeStudentAttendanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/historySchoolFragment"
@@ -43,14 +43,6 @@
         android:label="StaffAttendanceFragment" >
         <action
             android:id="@+id/action_staffAttendanceFragment_to_homeSchoolFragment"
-            app:destination="@id/homeSchoolFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/studentAttendanceFragment"
-        android:name="com.andela.eduteam14.android_app.core.ui.attendance.StudentAttendanceLastFragment"
-        android:label="StudentAttendanceFragment" >
-        <action
-            android:id="@+id/action_studentAttendanceFragment_to_homeSchoolFragment"
             app:destination="@id/homeSchoolFragment" />
     </fragment>
     <fragment
@@ -96,4 +88,8 @@
             android:id="@+id/action_numberOfClassFragment_to_classInformationFragment"
             app:destination="@id/classInformationFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/takeStudentAttendanceFragment"
+        android:name="com.andela.eduteam14.android_app.core.ui.attendance.student.TakeStudentAttendanceFragment"
+        android:label="TakeStudentAttendanceFragment" />
 </navigation>

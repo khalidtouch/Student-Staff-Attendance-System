@@ -115,7 +115,7 @@ class AttendanceSchoolFragment : Fragment(), UiAction {
 
             onChooseStudent = {
                 findNavController().navigate(
-                    R.id.action_attendanceSchoolFragment_to_studentAttendanceFragment
+                    R.id.action_attendanceSchoolFragment_to_takeStudentAttendanceFragment
                 )
             },
         )
