@@ -2,6 +2,7 @@ package com.andela.eduteam14.android_app.core.ui.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +35,7 @@ class SearchActivity : AppCompatActivity(), UiAction {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivitySearchBinding.inflate(layoutInflater)
+        Log.d("TAGbbbb", "onCreate: ")
 
         setContentView(binding?.root)
         initViews()
@@ -59,9 +61,13 @@ class SearchActivity : AppCompatActivity(), UiAction {
         search.clearFocus()
 
 
-        search.onClick { search.onActionViewExpanded() }
+        search.onClick {
+            Log.d("TAGbbbb", "onCreate: search view clicked  ")
+            search.onActionViewExpanded()
+        }
 
         search.onSearch {
+            Log.d("TAGbbbb", "on search ")
             query = fireStore.collection(FireStoreManagerImpl.REF_ORGANIZATIONS)
                 .whereEqualTo("Name", it.lowercase())
         }
