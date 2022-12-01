@@ -14,6 +14,7 @@ import com.andela.eduteam14.android_app.R
 import com.andela.eduteam14.android_app.core.data.models.CreateOrganizationRequest
 import com.andela.eduteam14.android_app.core.data.models.CreateSchoolRequest
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
+import com.andela.eduteam14.android_app.core.domain.usecase.DateTodayUseCase
 import com.andela.eduteam14.android_app.core.ui.OrganizationBaseActivity
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
@@ -41,6 +42,8 @@ class AddSchoolFragment : Fragment(), UiAction {
 
     private lateinit var pref: PreferenceRepository
 
+    private lateinit var today: DateTodayUseCase
+
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
@@ -63,6 +66,8 @@ class AddSchoolFragment : Fragment(), UiAction {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+
+        today = DateTodayUseCase()
 
         pref = PreferenceRepository.getInstance(requireContext())
 
@@ -91,7 +96,7 @@ class AddSchoolFragment : Fragment(), UiAction {
             request.AdminEmail = it
         }
 
-        request.DateModified = "March 12, 2022"
+        request.DateModified = today()
 
 
         if(pref.retrieveOrganizationToJoin().isNotEmpty()) {

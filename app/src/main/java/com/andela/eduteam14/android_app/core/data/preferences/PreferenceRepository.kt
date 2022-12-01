@@ -22,9 +22,27 @@ const val KEY_STUDENT_FEMALE_PRESENT = "key_student_female_present"
 
 const val KEY_MALE_STAFF_PRESENT = "key_male_staff"
 
+const val KEY_MALE_STAFF_TOTAL = "key_male_staff_total"
+
 const val KEY_FEMALE_STAFF_PRESENT = "key_female_staff"
 
+const val KEY_FEMALE_STAFF_TOTAL = "key_female_staff_total"
+
 const val KEY_ORGANIZATION_TO_JOIN = "key_organization_to_join"
+
+const val KEY_SCHOOL_NAME = "key_school_name"
+
+const val KEY_SCHOOL_CODE = "key_school_code"
+
+const val KEY_SCHOOL_ADDRESS = "key_school_address"
+
+const val KEY_SCHOOL_LOCATION = "key_school_location"
+
+const val KEY_SCHOOL_ADMIN_EMAIL = "key_school_admin_email"
+
+const val KEY_SCHOOL_ORGANIZATION_ID = "key_school_organiztion"
+
+const val KEY_SCHOOL_DATE_MODIFIED = "key_school_date_modified"
 
 const val KEY_NUMBER_OF_CLASSES = "key_number_of_classes"
 
@@ -180,19 +198,44 @@ class PreferenceRepository private constructor(context: Context) {
     }
 
     fun retrieveTotalMaleStaff(): Long {
-        TODO("Not yet implemented")
+        return pref.getLong(KEY_MALE_STAFF_TOTAL, 0L).toLong()
     }
 
     fun retrieveTotalFemaleStaff(): Long {
-            TODO("Not yet implemented")
+        return pref.getLong(KEY_FEMALE_STAFF_TOTAL, 0L).toLong()
     }
 
-    fun retrieveSchoolName(): String {
-
+    fun retrieveSchoolInformation(): LocalSchool {
+        return LocalSchool(
+            SchoolName = pref.getString(KEY_SCHOOL_NAME, "").toString(),
+            SchoolCode = pref.getString(KEY_SCHOOL_CODE, "").toString(),
+            Address = pref.getString(KEY_SCHOOL_ADDRESS, "").toString(),
+            SchoolLocation = pref.getString(KEY_SCHOOL_LOCATION, "").toString(),
+            AdminEmail = pref.getString(KEY_SCHOOL_ADMIN_EMAIL, "").toString(),
+            OrganizationId = pref.getString(KEY_SCHOOL_ORGANIZATION_ID, "").toString(),
+            DateModified = pref.getString(KEY_SCHOOL_DATE_MODIFIED, "").toString(),
+        )
     }
 
     fun saveSchoolInformation(school: LocalSchool) {
-        
+        school.apply {
+            pref.edit { putString(KEY_SCHOOL_NAME, SchoolName) }
+            pref.edit { putString(KEY_SCHOOL_CODE, SchoolCode) }
+            pref.edit { putString(KEY_SCHOOL_ADDRESS, Address) }
+            pref.edit { putString(KEY_SCHOOL_LOCATION, SchoolLocation) }
+            pref.edit { putString(KEY_SCHOOL_ADMIN_EMAIL, AdminEmail) }
+            pref.edit { putString(KEY_SCHOOL_ORGANIZATION_ID, OrganizationId) }
+            pref.edit { putString(KEY_SCHOOL_DATE_MODIFIED, DateModified) }
+        }
+
+    }
+
+    fun saveTotalMaleStaff(number: Long) {
+        pref.edit { putLong(KEY_MALE_STAFF_TOTAL, number) }
+    }
+
+    fun saveTotalFemaleStaff(number: Long) {
+        pref.edit { putLong(KEY_FEMALE_STAFF_TOTAL, number) }
     }
 
 

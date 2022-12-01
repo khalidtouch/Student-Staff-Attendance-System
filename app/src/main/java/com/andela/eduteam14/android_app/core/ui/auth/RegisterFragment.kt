@@ -110,10 +110,12 @@ class RegisterFragment : Fragment(), UiAction {
                     } else {
                         snackBar(binding?.root as View, "Could not create the admin")
                     }
+
+                    loadDialog()
                 }
             } else snackBar(binding?.root as View, "invalid input")
 
-            loadDialog()
+
         }
 
 

@@ -44,7 +44,7 @@ class SearchActivity : AppCompatActivity(), UiAction {
 
 
         val first = fireStore.collection(FireStoreManagerImpl.REF_ORGANIZATIONS)
-            .orderBy("Name")
+            .orderBy("Location")
 
         query = first
 
@@ -68,8 +68,8 @@ class SearchActivity : AppCompatActivity(), UiAction {
 
         search.onSearch {
             Log.d("TAGbbbb", "on search ")
-            query = fireStore.collection(FireStoreManagerImpl.REF_ORGANIZATIONS)
-                .whereEqualTo("Name", it.lowercase())
+//            query = fireStore.collection(FireStoreManagerImpl.REF_ORGANIZATIONS)
+//                .whereEqualTo("Name", it.lowercase())
         }
 
     }

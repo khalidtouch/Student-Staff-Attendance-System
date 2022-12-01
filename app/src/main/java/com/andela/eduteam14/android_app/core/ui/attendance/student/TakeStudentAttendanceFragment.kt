@@ -6,33 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.andela.eduteam14.android_app.R
-import com.andela.eduteam14.android_app.core.data.firebase.manager.firestore.FireStoreManagerImpl
 import com.andela.eduteam14.android_app.core.data.models.LocalAdmin
 import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
 import com.andela.eduteam14.android_app.core.domain.listeners.OnPublishDailyAttendanceListener
-import com.andela.eduteam14.android_app.core.domain.usecase.ChooseMemberDialogUseCase
 import com.andela.eduteam14.android_app.core.domain.usecase.DateTodayUseCase
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.extensions.onChange
 import com.andela.eduteam14.android_app.core.ui.extensions.onClick
 import com.andela.eduteam14.android_app.core.ui.extensions.snackBar
-import com.andela.eduteam14.android_app.core.ui.home.SchoolHomeAdapter
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModel
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModelFactory
-import com.andela.eduteam14.android_app.databinding.FragmentAttendanceSchoolBinding
 import com.andela.eduteam14.android_app.databinding.FragmentStudentAttendanceBinding
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import java.util.UUID
 import kotlin.properties.Delegates
 
@@ -58,7 +49,6 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
 
     private var maxClasses by Delegates.notNull<Int>()
 
-    private var publishListener: OnPublishDailyAttendanceListener? = null
 
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
@@ -79,8 +69,6 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         initViews()
 
@@ -191,7 +179,7 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
         val attendance = LocalDailyAttendance(
             AttendanceId = UUID.randomUUID().toString(),
             AdminName = admin.AdminName,
-            SchoolName = pref.retrieveSchoolName(),
+            SchoolName = pref.retrieveSchoolInformation().SchoolName,
             MaleStudentsTotal = pref.retrieveTotalMaleStudents(),
             FemaleStudentsTotal = pref.retrieveTotalFemaleStudents(),
             MaleStudentsPresent = pref.retrieveMaleStudentsPresent(),

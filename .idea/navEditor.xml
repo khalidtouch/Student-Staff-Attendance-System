@@ -353,8 +353,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1050" />
-                            <option name="y" value="344" />
+                            <option name="x" value="1197" />
+                            <option name="y" value="259" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -379,8 +379,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="888" />
-                            <option name="y" value="604" />
+                            <option name="x" value="918" />
+                            <option name="y" value="770" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -411,11 +411,6 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_attendanceSchoolFragment_to_studentAttendanceFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_attendanceSchoolFragment_to_takeStudentAttendanceFragment">
                               <value>
                                 <LayoutPositions />
@@ -431,8 +426,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1185" />
-                            <option name="y" value="-350" />
+                            <option name="x" value="1175" />
+                            <option name="y" value="-496" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -476,8 +471,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1145" />
-                            <option name="y" value="737" />
+                            <option name="x" value="1343" />
+                            <option name="y" value="759" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -497,8 +492,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1042" />
-                            <option name="y" value="-13" />
+                            <option name="x" value="1158" />
+                            <option name="y" value="-77" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -539,6 +534,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_settingsSchoolFragment_to_staffInformationFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -565,18 +565,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="studentAttendanceFragment">
+                  <entry key="staffInformationFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-20" />
-                            <option name="y" value="533" />
+                            <option name="x" value="778" />
+                            <option name="y" value="-594" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_studentAttendanceFragment_to_homeSchoolFragment">
+                            <entry key="action_staffInformationFragment_to_homeSchoolFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -594,6 +594,15 @@
                             <option name="x" value="485" />
                             <option name="y" value="700" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_takeStudentAttendanceFragment_to_homeSchoolFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

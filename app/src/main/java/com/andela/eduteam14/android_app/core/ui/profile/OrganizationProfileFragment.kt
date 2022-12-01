@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.andela.eduteam14.android_app.R
 import com.andela.eduteam14.android_app.core.data.models.CreateOrganizationRequest
+import com.andela.eduteam14.android_app.core.domain.usecase.DateTodayUseCase
 import com.andela.eduteam14.android_app.core.ui.OrganizationBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.auth.AuthActivity
@@ -32,6 +33,8 @@ class OrganizationProfileFragment : Fragment(), UiAction {
     private lateinit var name: TextInputEditText
     private var _binding: FragmentOrganizationProfileBinding? = null
 
+    private lateinit var today: DateTodayUseCase
+
     private val binding get() = _binding
 
     private val viewModel: OrganizationViewModel by viewModels {
@@ -52,6 +55,9 @@ class OrganizationProfileFragment : Fragment(), UiAction {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        today = DateTodayUseCase()
+
         initViews()
 
         handleInput()
@@ -80,7 +86,7 @@ class OrganizationProfileFragment : Fragment(), UiAction {
             request.AdminEmail = it
         }
 
-        request.DateModified = "March 12, 2022"
+        request.DateModified = today()
 
         request.OrganizationId = UUID.randomUUID().toString()
 

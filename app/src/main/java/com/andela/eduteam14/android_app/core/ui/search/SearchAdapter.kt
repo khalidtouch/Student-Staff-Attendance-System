@@ -18,7 +18,7 @@ import com.google.firebase.firestore.Query
 class SearchAdapter(
     private val context: Context,
     query: Query,
-    private val onSelectOrganization: (LocalOrganization) -> Unit,
+    private val onSelectOrganization: (LocalOrganization) -> Unit = {},
 ) :
     FireStoreAdapter<SearchAdapter.ViewHolder>(query) {
 
