@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.andela.eduteam14.android_app.R
 import com.andela.eduteam14.android_app.core.data.firebase.manager.firestore.FireStoreManagerImpl
 import com.andela.eduteam14.android_app.core.ui.UiAction
+import com.andela.eduteam14.android_app.core.ui.extensions.onClick
 import com.andela.eduteam14.android_app.core.ui.extensions.onSearch
 import com.andela.eduteam14.android_app.core.ui.history.HistorySchoolAdapter
 import com.andela.eduteam14.android_app.databinding.ActivitySearchBinding
@@ -56,6 +57,9 @@ class SearchActivity : AppCompatActivity(), UiAction {
         }
 
         search.clearFocus()
+
+
+        search.onClick { search.onActionViewExpanded() }
 
         search.onSearch {
             query = fireStore.collection(FireStoreManagerImpl.REF_ORGANIZATIONS)

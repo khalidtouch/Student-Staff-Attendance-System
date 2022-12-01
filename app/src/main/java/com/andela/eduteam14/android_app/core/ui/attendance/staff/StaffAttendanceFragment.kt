@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andela.eduteam14.android_app.R
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
+import com.andela.eduteam14.android_app.core.domain.usecase.DateTodayUseCase
 import com.andela.eduteam14.android_app.core.ui.OrganizationBaseActivity
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
@@ -36,6 +37,9 @@ class StaffAttendanceFragment : Fragment(), UiAction {
     private lateinit var males: TextInputEditText
     private lateinit var date: TextView
     private lateinit var commit: Button
+
+    private lateinit var today: DateTodayUseCase
+
     private var _binding: FragmentStaffAttendanceBinding? = null
 
     private lateinit var pref: PreferenceRepository
@@ -63,6 +67,8 @@ class StaffAttendanceFragment : Fragment(), UiAction {
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
+        today = DateTodayUseCase()
+
         pref = PreferenceRepository.getInstance(requireContext())
 
         (activity as SchoolBaseActivity).recordFab.hide()
@@ -71,39 +77,29 @@ class StaffAttendanceFragment : Fragment(), UiAction {
     }
 
     private fun handleInputs() {
+        var maleStaffPresent = "0"
+        var femaleStaffPresent = "0"
+
+        date.text = today()
 
         males.onChange {
-            viewModel.setMaleStaff(it.trim())
-            Toast.makeText(
-                requireContext(),
-                viewModel.dailyStaffAttendanceRequest.maleStaff,
-                Toast.LENGTH_SHORT
-            ).show()
+            maleStaffPresent = it
         }
 
         females.onChange {
-            viewModel.setFemaleStaff(it.trim())
-            Toast.makeText(
-                requireContext(),
-                viewModel.dailyStaffAttendanceRequest.femaleStaff,
-                Toast.LENGTH_SHORT
-            ).show()
+            femaleStaffPresent = it
         }
 
         commit.onClick {
-            if (viewModel.dailyStaffAttendanceRequest.isValid()) {
-                viewModel.onCommitStaffAttendance(pref)
+            pref.saveMaleStaffPresent(maleStaffPresent.toLong())
+            pref.saveFemaleStaffPresent(femaleStaffPresent.toLong())
 
-                findNavController().navigate(
-                    R.id.action_staffAttendanceFragment_to_homeSchoolFragment
-                )
-
-            } else Toast.makeText(requireContext(), "Testing", Toast.LENGTH_SHORT).show()
-
-            // snackBar(binding?.root as View, "Please check the input")
-
+            findNavController().navigate(
+                R.id.action_staffAttendanceFragment_to_homeSchoolFragment
+            )
         }
     }
+
 
     override fun initViews() {
         date = binding?.dateModified!!

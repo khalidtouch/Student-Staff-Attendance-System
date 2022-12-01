@@ -34,8 +34,8 @@
             android:id="@+id/action_settingsSchoolFragment_to_adminProfileFragment"
             app:destination="@id/adminProfileFragment" />
         <action
-            android:id="@+id/action_settingsSchoolFragment_to_classInformationFragment"
-            app:destination="@id/classInformationFragment" />
+            android:id="@+id/action_settingsSchoolFragment_to_numberOfClassFragment"
+            app:destination="@id/numberOfClassFragment" />
     </fragment>
     <fragment
         android:id="@+id/staffAttendanceFragment"
@@ -87,5 +87,13 @@
         <action
             android:id="@+id/action_joinOrganizationFragment_to_addSchoolFragment2"
             app:destination="@id/addSchoolFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/numberOfClassFragment"
+        android:name="com.andela.eduteam14.android_app.core.ui.classinformation.NumberOfClassFragment"
+        android:label="NumberOfClassFragment" >
+        <action
+            android:id="@+id/action_numberOfClassFragment_to_classInformationFragment"
+            app:destination="@id/classInformationFragment" />
     </fragment>
 </navigation>

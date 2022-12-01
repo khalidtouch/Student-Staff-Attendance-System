@@ -81,7 +81,7 @@ class SettingsSchoolFragment : Fragment(), UiAction {
 
         studentAndClass.onClick {
             findNavController().navigate(
-                R.id.action_settingsSchoolFragment_to_classInformationFragment
+                R.id.action_settingsSchoolFragment_to_numberOfClassFragment
             )
         }
 

@@ -9,7 +9,7 @@
     and insight into staff and student performance data</string>
     <string name="frag_screen_text_three"> We got you covered for easy access to data
     for making your next decision</string>
-    <string name="next">Swipe for next</string>
+    <string name="next">Next</string>
     <string name="continue_text">Continue</string>
     <string name="edu14">Edu14</string>
 
@@ -151,5 +151,8 @@
     <string name="can_create_org">Sorry, you already own an Organization</string>
     <string name="sample_school">Federal Ministry of Education</string>
     <string name="sample_location">Cairo, Egypt</string>
+    <string name="enter_total_number_of_classes">Enter total number of classes</string>
+    <string name="preferred">[15 classes is the convention]</string>
+    <string name="hint_number_of_classes">Number of classes</string>
 
 </resources>

@@ -426,8 +426,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1062" />
-                            <option name="y" value="-63" />
+                            <option name="x" value="1185" />
+                            <option name="y" value="-350" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -475,6 +475,36 @@
                             <option name="y" value="737" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_joinOrganizationFragment_to_addSchoolFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="numberOfClassFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1042" />
+                            <option name="y" value="-13" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_numberOfClassFragment_to_classInformationFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -499,7 +529,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_settingsSchoolFragment_to_classInformationFragment">
+                            <entry key="action_settingsSchoolFragment_to_numberOfClassFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -514,8 +544,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="362" />
-                            <option name="y" value="412" />
+                            <option name="x" value="283" />
+                            <option name="y" value="520" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -535,8 +565,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="16" />
-                            <option name="y" value="418" />
+                            <option name="x" value="-20" />
+                            <option name="y" value="533" />
                           </Point>
                         </option>
                         <option name="myPositions">

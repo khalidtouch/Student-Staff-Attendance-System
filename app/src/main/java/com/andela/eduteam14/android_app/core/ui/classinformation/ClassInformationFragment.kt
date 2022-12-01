@@ -67,7 +67,6 @@ class ClassInformationFragment : Fragment(), UiAction {
 
         handleInput()
 
-
     }
 
 
@@ -158,8 +157,6 @@ class ClassInformationFragment : Fragment(), UiAction {
         heading = binding?.Heading!!
 
         className.setHint(getString(R.string.classLevel, viewModel.currentClass.toString()))
-        maleStudentsNumber.setHint(0.toString())
-        femaleStudentsNumber.setHint(0.toString())
         counter.text = getString(R.string.class_counter)
 
         if (viewModel.currentClass < viewModel.maxClasses) hideCommit()

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.andela.eduteam14.android_app.MainApplication
 import com.andela.eduteam14.android_app.core.data.firebase.manager.firestore.FireStoreManagerImpl
 import com.andela.eduteam14.android_app.core.data.mock.AttendanceRegistry
+import com.andela.eduteam14.android_app.core.domain.usecase.DateTodayUseCase
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModel
@@ -64,6 +65,7 @@ class HomeSchoolFragment : Fragment(), UiAction {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+
 
         (activity as SchoolBaseActivity).hideFab()
 

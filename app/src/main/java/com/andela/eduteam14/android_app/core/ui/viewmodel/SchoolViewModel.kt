@@ -14,6 +14,7 @@ import com.andela.eduteam14.android_app.core.data.models.DailyStaffAttendanceReq
 import com.andela.eduteam14.android_app.core.data.models.DailyStudentAttendanceRequest
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
 import com.andela.eduteam14.android_app.core.data.repository.MainRepository
+import com.andela.eduteam14.android_app.core.domain.usecase.LongAggregationUseCase
 import com.andela.eduteam14.android_app.core.domain.usecase.StudentAggregationUseCase
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.launch
@@ -31,6 +32,11 @@ class SchoolViewModel(
     private var _createAdminRequest: CreateAdminRequest = CreateAdminRequest()
 
     private var _classRequestList = ArrayList<CreateClassRequest>(15)
+
+    private var _maleStudentsPresent = ArrayList<String>()
+
+    private var _femaleStudentsPresent = ArrayList<String>()
+
 
     private var _dailyStaffAttendanceRequest: DailyStaffAttendanceRequest =
         DailyStaffAttendanceRequest()
@@ -51,9 +57,52 @@ class SchoolViewModel(
 
     var currentClass = 1
 
-    val maxClasses = 3
+    var maxClasses = 0
 
     val aggregator = StudentAggregationUseCase()
+
+    val longAggregation = LongAggregationUseCase()
+
+    private val pages: ArrayList<Map<String, Pair<String, String>>> = arrayListOf()
+
+    val studentPageInstance = mapOf<String, Pair<String, String>>()
+
+    fun saveAllMaleStudentsPresent(items: ArrayList<String>, pref: PreferenceRepository) {
+        pref.saveMaleStudentsPresent(longAggregation(items).toLong())
+    }
+
+    fun addInstanceToPages(currentClass: String, males: String, females: String) {
+        val instance = mapOf(currentClass to Pair(males, females))
+        this.pages.add(instance)
+    }
+
+    fun retrieveInstance(currentClass: String, onResult: (Pair<String, String>) -> Unit) {
+        viewModelScope.launch {
+            val instance = pages.find {
+                it.keys.equals(currentClass)
+            }
+
+            onResult(instance?.get(currentClass)!!)
+        }
+    }
+
+
+    fun saveAllFemaleStudentsPresent(items: ArrayList<String>, pref: PreferenceRepository) {
+        pref.saveFemaleStudentsPresent(longAggregation(items).toLong())
+    }
+
+
+    fun updateMaleStudents(number: String) {
+        _maleStudentsPresent.add(number)
+    }
+
+    fun updateFemaleStudents(number: String) {
+        _femaleStudentsPresent.add(number)
+    }
+
+    fun setMaxClasses(pref: PreferenceRepository) {
+        maxClasses = pref.retrieveNumberOfClasses()
+    }
 
     fun setAdminRequest(request: CreateAdminRequest) {
         this._createAdminRequest = request
@@ -75,16 +124,6 @@ class SchoolViewModel(
         }
     }
 
-    fun setStaffAttendanceDate(date: String) {
-        this._dailyStaffAttendanceRequest.date = date
-    }
-
-    fun onCommitStaffAttendance(pref: PreferenceRepository) {
-        pref.saveMaleStaffPresent(_dailyStaffAttendanceRequest.maleStaff.toLong())
-        pref.saveFemaleStaffPresent(_dailyStaffAttendanceRequest.femaleStaff.toLong())
-
-        Log.i(TAG, "onCommitStaffAttendance: Staff attendance info has been saved")
-    }
 
     fun addClass(onResult: (CreateClassRequest) -> Unit) {
         if (_createClassRequest.isValid() && _classRequestList.size < maxClasses) {
@@ -155,7 +194,7 @@ class SchoolViewModel(
     }
 
     fun createAdmin(onResult: (Boolean) -> Unit) {
-        viewModelScope.launch {  repository.createAdmin(createAdminRequest, onResult) }
+        viewModelScope.launch { repository.createAdmin(createAdminRequest, onResult) }
 
     }
 

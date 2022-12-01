@@ -20,3 +20,4 @@ class StudentAggregationUseCase(
         return Pair<Long, Long>(males, females)
     }
 }
+

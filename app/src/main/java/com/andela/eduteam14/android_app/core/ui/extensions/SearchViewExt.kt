@@ -15,3 +15,7 @@ fun SearchView.onSearch(handler: (String) -> Unit) {
         }
     })
 }
+
+fun SearchView.onClick(handler: () -> Unit) {
+    setOnClickListener { handler() }
+}
