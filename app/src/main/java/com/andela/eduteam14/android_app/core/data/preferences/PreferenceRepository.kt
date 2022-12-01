@@ -2,6 +2,8 @@ package com.andela.eduteam14.android_app.core.data.preferences
 
 import android.content.Context
 import androidx.core.content.edit
+import com.andela.eduteam14.android_app.core.data.models.LocalAdmin
+import com.andela.eduteam14.android_app.core.data.models.LocalSchool
 
 
 const val USER_SESSION = "user_session"
@@ -25,6 +27,17 @@ const val KEY_FEMALE_STAFF_PRESENT = "key_female_staff"
 const val KEY_ORGANIZATION_TO_JOIN = "key_organization_to_join"
 
 const val KEY_NUMBER_OF_CLASSES = "key_number_of_classes"
+
+const val KEY_CLASS_NUMBER = "key_class_number_"
+
+const val KEY_ADMIN_ID = "key_admin_id"
+
+const val KEY_ADMIN_NAME = "key_admin_name"
+
+const val KEY_ADMIN_EMAIL = "key_admin_email"
+
+const val KEY_ADMIN_ACCOUNT = "key_admin_account"
+
 
 class PreferenceRepository private constructor(context: Context) {
     private val pref =
@@ -122,6 +135,64 @@ class PreferenceRepository private constructor(context: Context) {
 
     fun retrieveFemaleStudentsPresent(): Long {
         return pref.getLong(KEY_STUDENT_FEMALE_PRESENT, 0L)
+    }
+
+    fun saveClassNames(items: ArrayList<String>) {
+        pref.edit { putInt(KEY_CLASS_NUMBER, items.size) }
+
+        for (i in 0 until items.size) {
+            pref.edit { putString("$KEY_CLASS_NUMBER $i", items[i]) }
+        }
+    }
+
+    fun retrieveClassNames(): ArrayList<String> {
+        val size = pref.getInt(KEY_CLASS_NUMBER, 0)
+        val items = arrayListOf<String>()
+
+        for (i in 0 until size) {
+            val item = pref.getString("$KEY_CLASS_NUMBER $i", "").toString()
+            items.add(item)
+        }
+
+        return items
+
+    }
+
+    fun retrieveAdmin(): LocalAdmin {
+        return LocalAdmin(
+            AdminId = pref.getString(KEY_ADMIN_ID, "").toString(),
+            AdminEmail = pref.getString(KEY_ADMIN_EMAIL, "").toString(),
+            AdminName = pref.getString(KEY_ADMIN_NAME, "").toString(),
+            Account = pref.getString(KEY_ADMIN_ACCOUNT, "").toString()
+        )
+    }
+
+    fun saveAdmin(admin: LocalAdmin) {
+        admin.apply {
+            pref.edit { putString(KEY_ADMIN_ID, AdminId) }
+
+            pref.edit { putString(KEY_ADMIN_NAME, AdminName) }
+
+            pref.edit { putString(KEY_ADMIN_EMAIL, AdminEmail) }
+
+            pref.edit { putString(KEY_ADMIN_ACCOUNT, Account) }
+        }
+    }
+
+    fun retrieveTotalMaleStaff(): Long {
+        TODO("Not yet implemented")
+    }
+
+    fun retrieveTotalFemaleStaff(): Long {
+            TODO("Not yet implemented")
+    }
+
+    fun retrieveSchoolName(): String {
+
+    }
+
+    fun saveSchoolInformation(school: LocalSchool) {
+        
     }
 
 

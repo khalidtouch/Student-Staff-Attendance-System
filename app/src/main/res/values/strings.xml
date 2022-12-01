@@ -154,5 +154,6 @@
     <string name="enter_total_number_of_classes">Enter total number of classes</string>
     <string name="preferred">[15 classes is the convention]</string>
     <string name="hint_number_of_classes">Number of classes</string>
+    <string name="no_class_specified">No classes specified</string>
 
 </resources>

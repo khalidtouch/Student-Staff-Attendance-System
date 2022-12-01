@@ -9,16 +9,22 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.andela.eduteam14.android_app.R
 import com.andela.eduteam14.android_app.core.data.firebase.manager.firestore.FireStoreManagerImpl
+import com.andela.eduteam14.android_app.core.data.models.LocalAdmin
+import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
+import com.andela.eduteam14.android_app.core.domain.listeners.OnPublishDailyAttendanceListener
 import com.andela.eduteam14.android_app.core.domain.usecase.ChooseMemberDialogUseCase
 import com.andela.eduteam14.android_app.core.domain.usecase.DateTodayUseCase
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.extensions.onChange
 import com.andela.eduteam14.android_app.core.ui.extensions.onClick
+import com.andela.eduteam14.android_app.core.ui.extensions.snackBar
 import com.andela.eduteam14.android_app.core.ui.home.SchoolHomeAdapter
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModel
 import com.andela.eduteam14.android_app.core.ui.viewmodel.SchoolViewModelFactory
@@ -27,6 +33,7 @@ import com.andela.eduteam14.android_app.databinding.FragmentStudentAttendanceBin
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.UUID
 import kotlin.properties.Delegates
 
 class TakeStudentAttendanceFragment : Fragment(), UiAction {
@@ -51,6 +58,8 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
 
     private var maxClasses by Delegates.notNull<Int>()
 
+    private var publishListener: OnPublishDailyAttendanceListener? = null
+
     private val viewModel: SchoolViewModel by viewModels {
         SchoolViewModelFactory(
             (activity as SchoolBaseActivity).coreComponent.repository
@@ -71,7 +80,11 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         initViews()
+
+        (activity as SchoolBaseActivity).recordFab.hide()
 
         pref = PreferenceRepository.getInstance(requireContext())
 
@@ -80,9 +93,7 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
         viewModel.setMaxClasses(pref)
 
 
-
-        enableNextNotPrevious()
-
+        // enableNextNotPrevious()
 
 
         viewModel.setMaxClasses(pref)
@@ -97,6 +108,11 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
     private fun handleInput() {
         date.text = today()
 
+        val allClasses = pref.retrieveClassNames()
+
+        if (allClasses.isNotEmpty()) className.text = allClasses[viewModel.currentClass - 1] else
+            className.text = getString(R.string.no_class_specified)
+
         var maleStudents = "0"
 
         var femaleStudents = "0"
@@ -109,47 +125,103 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
 
         next.onClick {
 
-            if(maleStudents.isNotEmpty() && femaleStudents.isNotEmpty()) {
-                clearField()
+            if (allClasses.isNotEmpty()) {
+                if (maleStudents.isNotEmpty() && femaleStudents.isNotEmpty()) {
 
-                viewModel.updateMaleStudents(maleStudents)
+                    if (viewModel.currentClass < viewModel.maxClasses) {
 
-                viewModel.updateFemaleStudents(femaleStudents)
+                        clearField()
 
-                viewModel.addInstanceToPages(
-                    viewModel.currentClass.toString(),
-                    maleStudents,
-                    femaleStudents,
-                )
+                        if (allClasses.isNotEmpty()) className.text =
+                            allClasses[viewModel.currentClass - 1] else
+                            className.text = getString(R.string.no_class_specified)
 
-                viewModel.currentClass += 1
+                        viewModel.updateMaleStudents(maleStudents)
 
-                manageButton()
+                        viewModel.updateFemaleStudents(femaleStudents)
+
+                        viewModel.addInstanceToPages(
+                            viewModel.currentClass.toString(),
+                            maleStudents,
+                            femaleStudents,
+                        )
+
+                        viewModel.currentClass += 1
+
+                        manageButton()
+
+
+                    }
+
+
+                    if (viewModel.currentClass >= viewModel.maxClasses) {
+                        hideBoth()
+                    }
+
+                }
             }
+
 
         }
 
         previous.onClick {
+            snackBar(
+                binding?.StudentAttendanceFragmentPreviousBtn as View,
+                getString(R.string.not_yet_implemented)
+            )
+        }
 
+        submit.onClick {
+            onSubmit()
+
+            findNavController().navigate(
+                R.id.action_takeStudentAttendanceFragment_to_homeSchoolFragment
+            )
         }
 
     }
 
-    private fun clearField() {
-        males.setText(0.toString())
-        females.setText(0.toString())
+    private fun onSubmit() {
+        viewModel.saveAllMaleStudentsPresent(viewModel.maleStudentsPresent, pref)
+
+        viewModel.saveAllFemaleStudentsPresent(viewModel.femaleStudentsPresent, pref)
+
+        val admin: LocalAdmin = pref.retrieveAdmin()
+
+        val attendance = LocalDailyAttendance(
+            AttendanceId = UUID.randomUUID().toString(),
+            AdminName = admin.AdminName,
+            SchoolName = pref.retrieveSchoolName(),
+            MaleStudentsTotal = pref.retrieveTotalMaleStudents(),
+            FemaleStudentsTotal = pref.retrieveTotalFemaleStudents(),
+            MaleStudentsPresent = pref.retrieveMaleStudentsPresent(),
+            FemaleStudentsPresent = pref.retrieveFemaleStudentsPresent(),
+            MaleStaffTotal = pref.retrieveTotalMaleStaff(),
+            FemaleStaffTotal = pref.retrieveTotalFemaleStaff(),
+            FemaleStaffPresent = pref.retrieveFemaleStaffPresent(),
+            MaleStaffPresent = pref.retrieveMaleStaffPresent(),
+            DateModified = today(),
+        )
+
+        viewModel.onPublish(attendance)
     }
+
+    private fun clearField() {
+        males.setText("")
+        females.setText("")
+    }
+
 
     private fun manageButton() {
         when (viewModel.currentClass) {
             1 -> {
-                enableNextNotPrevious()
+                // enableNextNotPrevious()
                 showBoth()
                 submit.visibility = View.INVISIBLE
             }
 
             in 2 until maxClasses -> {
-                enablePreviousNext()
+                //  enablePreviousNext()
                 showBoth()
                 submit.visibility = View.INVISIBLE
             }
@@ -179,12 +251,14 @@ class TakeStudentAttendanceFragment : Fragment(), UiAction {
     private fun hideBoth() {
         previous.visibility = View.INVISIBLE
         next.visibility = View.INVISIBLE
+        submit.visibility = View.VISIBLE
     }
 
 
     private fun showBoth() {
         previous.visibility = View.VISIBLE
         next.visibility = View.VISIBLE
+        submit.visibility = View.INVISIBLE
     }
 
 

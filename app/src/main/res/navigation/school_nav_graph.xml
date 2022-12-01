@@ -91,5 +91,9 @@
     <fragment
         android:id="@+id/takeStudentAttendanceFragment"
         android:name="com.andela.eduteam14.android_app.core.ui.attendance.student.TakeStudentAttendanceFragment"
-        android:label="TakeStudentAttendanceFragment" />
+        android:label="TakeStudentAttendanceFragment" >
+        <action
+            android:id="@+id/action_takeStudentAttendanceFragment_to_homeSchoolFragment"
+            app:destination="@id/homeSchoolFragment" />
+    </fragment>
 </navigation>

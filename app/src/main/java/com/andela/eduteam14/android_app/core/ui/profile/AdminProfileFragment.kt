@@ -82,6 +82,9 @@ class AdminProfileFragment : Fragment(), UiAction {
 
         save.onClick {
             viewModel.setAdminRequest(createAdminRequest)
+
+            pref.saveAdmin(createAdminRequest.toModel()) //
+
             viewModel.createAdmin {
                 if (it) {
                     snackBar(binding?.root as View, getString(R.string.completed))

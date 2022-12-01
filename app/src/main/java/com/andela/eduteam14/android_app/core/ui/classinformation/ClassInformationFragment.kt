@@ -65,12 +65,17 @@ class ClassInformationFragment : Fragment(), UiAction {
 
         pref = PreferenceRepository.getInstance(requireContext())
 
+        classes = pref.retrieveNumberOfClasses()
+
+        viewModel.maxClasses = classes
+
         handleInput()
 
     }
 
 
     private fun handleInput() {
+
         className.onChange { viewModel.setClassName(it.trim()) }
 
         maleStudentsNumber.onChange { viewModel.setNumberOfMaleStudents(it.trim()) }
@@ -81,6 +86,15 @@ class ClassInformationFragment : Fragment(), UiAction {
         }
 
         commit.onClick {
+
+            val names = arrayListOf<String>()
+
+            viewModel.classRequestList.map {
+                names.add(it.className)
+            }
+
+            pref.saveClassNames(names)
+
             viewModel.onCommitClassInformation(pref)
             Log.i(TAG, "onNext: Number of classes ${viewModel.classRequestList.size}")
             findNavController().navigate(

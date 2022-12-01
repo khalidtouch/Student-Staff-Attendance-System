@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteOrganization
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteSchool
 import com.andela.eduteam14.android_app.core.data.models.CreateAdminRequest
 import com.andela.eduteam14.android_app.core.data.models.CreateClassRequest
@@ -12,11 +11,12 @@ import com.andela.eduteam14.android_app.core.data.models.CreateSchoolRequest
 import com.andela.eduteam14.android_app.core.data.models.DailyAttendanceRequest
 import com.andela.eduteam14.android_app.core.data.models.DailyStaffAttendanceRequest
 import com.andela.eduteam14.android_app.core.data.models.DailyStudentAttendanceRequest
+import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
 import com.andela.eduteam14.android_app.core.data.preferences.PreferenceRepository
 import com.andela.eduteam14.android_app.core.data.repository.MainRepository
+import com.andela.eduteam14.android_app.core.domain.listeners.OnPublishDailyAttendanceListener
 import com.andela.eduteam14.android_app.core.domain.usecase.LongAggregationUseCase
 import com.andela.eduteam14.android_app.core.domain.usecase.StudentAggregationUseCase
-import com.google.firebase.firestore.Query
 import kotlinx.coroutines.launch
 
 class SchoolViewModel(
@@ -31,11 +31,15 @@ class SchoolViewModel(
 
     private var _createAdminRequest: CreateAdminRequest = CreateAdminRequest()
 
-    private var _classRequestList = ArrayList<CreateClassRequest>(15)
+    private var _classRequestList = ArrayList<CreateClassRequest>()
 
     private var _maleStudentsPresent = ArrayList<String>()
 
+    val maleStudentsPresent get() = _maleStudentsPresent
+
     private var _femaleStudentsPresent = ArrayList<String>()
+
+    val femaleStudentsPresent get() = _femaleStudentsPresent
 
 
     private var _dailyStaffAttendanceRequest: DailyStaffAttendanceRequest =
@@ -71,6 +75,10 @@ class SchoolViewModel(
         pref.saveMaleStudentsPresent(longAggregation(items).toLong())
     }
 
+    fun saveAllFemaleStudentsPresent(items: ArrayList<String>, pref: PreferenceRepository) {
+        pref.saveFemaleStudentsPresent(longAggregation(items).toLong())
+    }
+
     fun addInstanceToPages(currentClass: String, males: String, females: String) {
         val instance = mapOf(currentClass to Pair(males, females))
         this.pages.add(instance)
@@ -84,11 +92,6 @@ class SchoolViewModel(
 
             onResult(instance?.get(currentClass)!!)
         }
-    }
-
-
-    fun saveAllFemaleStudentsPresent(items: ArrayList<String>, pref: PreferenceRepository) {
-        pref.saveFemaleStudentsPresent(longAggregation(items).toLong())
     }
 
 
@@ -201,6 +204,13 @@ class SchoolViewModel(
 
     companion object {
         val TAG = "SchoolViewModel"
+    }
+
+    fun onPublish(attendance: LocalDailyAttendance) {
+        viewModelScope.launch {
+            repository.addAttendance(attendance) {}
+        }
+
     }
 }
 

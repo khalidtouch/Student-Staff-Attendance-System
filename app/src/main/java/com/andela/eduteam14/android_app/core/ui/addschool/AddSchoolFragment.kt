@@ -106,6 +106,7 @@ class AddSchoolFragment : Fragment(), UiAction {
         createBtn.onClick {
             if (canCreateSchool()) {
                 if (request.isValid()) {
+                    pref.saveSchoolInformation(request.toModel())
                     viewModel.createSchool {
                         if (it) {
                             findNavController().navigate(
