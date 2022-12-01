@@ -62,7 +62,7 @@ class OrganizationProfileFragment : Fragment(), UiAction {
         val request = CreateOrganizationRequest()
 
         name.onChange {
-            request.Name = it
+            request.Name = it.lowercase()
             viewModel.setOrganizationRequest(request)
         }
 

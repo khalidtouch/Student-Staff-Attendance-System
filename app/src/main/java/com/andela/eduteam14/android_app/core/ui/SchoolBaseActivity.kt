@@ -3,6 +3,8 @@ package com.andela.eduteam14.android_app.core.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -11,7 +13,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.andela.eduteam14.android_app.MainApplication
 import com.andela.eduteam14.android_app.R
 import com.andela.eduteam14.android_app.core.di.CoreComponent
+import com.andela.eduteam14.android_app.core.ui.auth.GO_TO_ADD_SCHOOL
+import com.andela.eduteam14.android_app.core.ui.auth.KEY_GO_TO_ADD_SCHOOL
+import com.andela.eduteam14.android_app.core.ui.extensions.goto
 import com.andela.eduteam14.android_app.core.ui.extensions.onItemClick
+import com.andela.eduteam14.android_app.core.ui.search.SearchActivity
 import com.andela.eduteam14.android_app.databinding.ActivityBaseBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -64,7 +70,6 @@ class SchoolBaseActivity : AppCompatActivity(), UiAction {
 
     }
 
-
     override fun onResume() {
         super.onResume()
 
@@ -73,6 +78,10 @@ class SchoolBaseActivity : AppCompatActivity(), UiAction {
     override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart: Called")
+
+        if(intent.getStringExtra(KEY_GO_TO_ADD_SCHOOL) == GO_TO_ADD_SCHOOL) {
+            jumpTo(R.id.joinOrganizationFragment)
+        }
     }
 
     fun hideFab() {
@@ -91,7 +100,7 @@ class SchoolBaseActivity : AppCompatActivity(), UiAction {
         toolbar.onItemClick {
             when (it.itemId) {
                 R.id.search_school -> {
-                    onStartSearch()
+                    this.goto(SearchActivity::class.java)
                 }
             }
         }
@@ -106,6 +115,11 @@ class SchoolBaseActivity : AppCompatActivity(), UiAction {
 
     override fun onDestroyComponents() {
         _binding = null
+    }
+
+    private fun jumpTo(id: Int) {
+        navController.navigateUp()
+        navController.navigate(id)
     }
 
     override fun onDestroy() {

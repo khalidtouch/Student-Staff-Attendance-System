@@ -6,14 +6,14 @@ data class CreateSchoolRequest(
     var SchoolCode: String = "",
     var OrganizationId: String = "",
     var SchoolName: String = "",
-    var AdminName: String = "",
+    var AdminEmail: String = "",
     var Address: String = "",
     var SchoolLocation: String = "",
     var DateModified: String = "",
 ) {
     fun isValid(): Boolean {
         val invalid = OrganizationId.isEmpty() || SchoolName.isEmpty()
-                || AdminName.isEmpty() || Address.isEmpty() || SchoolLocation.isEmpty()
+                || AdminEmail.isEmpty() || Address.isEmpty() || SchoolLocation.isEmpty()
                 || DateModified.isEmpty()
 
         return !invalid
@@ -24,7 +24,7 @@ data class CreateSchoolRequest(
             SchoolCode,
             OrganizationId,
             SchoolName,
-            AdminName,
+            AdminEmail,
             Address,
             SchoolLocation,
             DateModified

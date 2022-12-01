@@ -4,6 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteOrganization
+import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteSchool
+import com.andela.eduteam14.android_app.core.data.models.CreateAdminRequest
 import com.andela.eduteam14.android_app.core.data.models.CreateClassRequest
 import com.andela.eduteam14.android_app.core.data.models.CreateSchoolRequest
 import com.andela.eduteam14.android_app.core.data.models.DailyAttendanceRequest
@@ -25,6 +28,8 @@ class SchoolViewModel(
 
     private var _createClassRequest: CreateClassRequest = CreateClassRequest()
 
+    private var _createAdminRequest: CreateAdminRequest = CreateAdminRequest()
+
     private var _classRequestList = ArrayList<CreateClassRequest>(15)
 
     private var _dailyStaffAttendanceRequest: DailyStaffAttendanceRequest =
@@ -42,11 +47,17 @@ class SchoolViewModel(
 
     val dailyStudentAttendanceRequest get() = _dailyStudentAttendanceRequest
 
+    val createAdminRequest get() = _createAdminRequest
+
     var currentClass = 1
 
     val maxClasses = 3
 
     val aggregator = StudentAggregationUseCase()
+
+    fun setAdminRequest(request: CreateAdminRequest) {
+        this._createAdminRequest = request
+    }
 
     fun setMaleStaff(number: String) {
         try {
@@ -117,32 +128,8 @@ class SchoolViewModel(
         Log.d(TAG, "onCommitClassInformation: Saved student info")
     }
 
-    fun setSchoolCode(code: String) {
-        this._createSchoolRequest.SchoolCode = code
-    }
-
-    fun setOrganizationId(id: String) {
-        this._createSchoolRequest.OrganizationId = id
-    }
-
-    fun setSchoolName(name: String) {
-        this._createSchoolRequest.SchoolName = name
-    }
-
-    fun setAdminName(name: String) {
-        this._createSchoolRequest.AdminName = name
-    }
-
-    fun setAddress(address: String) {
-        this._createSchoolRequest.Address = address
-    }
-
-    fun setSchoolLocation(location: String) {
-        this._createSchoolRequest.SchoolLocation = location
-    }
-
-    fun setDateModified(date: String) {
-        this._createSchoolRequest.DateModified = date
+    fun setSchoolRequest(request: CreateSchoolRequest) {
+        this._createSchoolRequest = request
     }
 
 
@@ -152,10 +139,24 @@ class SchoolViewModel(
         }
     }
 
-    fun findAllAttendance(onResult: (Query) -> Unit) {
+    fun findSchoolByAdminEmail(email: String, onResult: (RemoteSchool) -> Unit) {
         viewModelScope.launch {
-            repository.findAllAttendance(onResult)
+            repository.findSchoolByAdminEmail(email, onResult)
         }
+    }
+
+    fun activeAdminEmail(onResult: (String) -> Unit) {
+        viewModelScope.launch { repository.activeAdminEmail(onResult) }
+
+    }
+
+    fun adminId(onResult: (String) -> Unit) {
+        viewModelScope.launch { repository.adminId(onResult) }
+    }
+
+    fun createAdmin(onResult: (Boolean) -> Unit) {
+        viewModelScope.launch {  repository.createAdmin(createAdminRequest, onResult) }
+
     }
 
 

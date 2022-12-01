@@ -24,7 +24,7 @@ class MainRepositoryImpl(
         const val TAG = "MainRepositoryImpl"
     }
 
-    override fun createAccount(request: CreateAdminRequest, onResult: (Boolean) -> Unit) {
+    override fun createAccount(request: LoginAdminRequest, onResult: (Boolean) -> Unit) {
         Log.i(TAG, "createAccount: Creating user account")
         authManager.createAccount(request, onResult)
     }
@@ -36,6 +36,10 @@ class MainRepositoryImpl(
     override fun logout() {
         Log.i(TAG, "logout: Logged out")
         authManager.logout()
+    }
+
+    override fun adminId(onResult: (String) -> Unit) {
+        authManager.adminId(onResult)
     }
 
     override fun activeAdminEmail(onResult: (String) -> Unit) {
@@ -67,6 +71,10 @@ class MainRepositoryImpl(
 
     override fun findSchoolByName(name: String, onResult: (RemoteSchool) -> Unit) {
         fireStoreManager.findSchoolByName(name, onResult)
+    }
+
+    override fun findSchoolByAdminEmail(email: String, onResult: (RemoteSchool) -> Unit) {
+        fireStoreManager.findSchoolByAdminEmail(email, onResult)
     }
 
     override fun findAllSchools(onResult: (Query) -> Unit) {

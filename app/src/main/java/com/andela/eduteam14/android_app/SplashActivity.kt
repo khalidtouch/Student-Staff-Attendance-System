@@ -30,7 +30,7 @@ class SplashActivity : AppCompatActivity(), UiAction {
         initViews()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            goto(OrganizationBaseActivity::class.java)
+            goto(AuthActivity::class.java)
         }, 2000)
     }
 

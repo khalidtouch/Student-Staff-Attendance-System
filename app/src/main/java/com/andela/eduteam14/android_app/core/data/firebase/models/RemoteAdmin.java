@@ -6,17 +6,17 @@ public class RemoteAdmin {
 
     private String AdminId;
     private String AdminName;
-    private String AdminEmail;
+    private String AdminPhone;
 
     private String Account;
 
     public RemoteAdmin() {
     }
 
-    public RemoteAdmin(String adminId, String adminName, String adminEmail, String account) {
+    public RemoteAdmin(String adminId, String adminName, String adminPhone, String account) {
         AdminId = adminId;
         AdminName = adminName;
-        AdminEmail = adminEmail;
+        AdminPhone = adminPhone;
         Account = account;
     }
 
@@ -44,19 +44,19 @@ public class RemoteAdmin {
         AdminName = adminName;
     }
 
-    public String getAdminEmail() {
-        return AdminEmail;
+    public String getAdminPhone() {
+        return AdminPhone;
     }
 
-    public void setAdminEmail(String adminEmail) {
-        AdminEmail = adminEmail;
+    public void setAdminPhone(String adminPhone) {
+        AdminPhone = adminPhone;
     }
 
     public LocalAdmin mapToLocal() {
         return new LocalAdmin(
                 AdminId,
                 AdminName,
-                AdminEmail,
+                AdminPhone,
                 Account
         );
     }

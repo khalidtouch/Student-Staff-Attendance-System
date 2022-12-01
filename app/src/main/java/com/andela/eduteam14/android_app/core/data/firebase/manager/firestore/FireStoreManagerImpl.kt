@@ -1,6 +1,5 @@
 package com.andela.eduteam14.android_app.core.data.firebase.manager.firestore
 
-import android.util.Log
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteAdmin
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteDailyAttendance
 import com.andela.eduteam14.android_app.core.data.firebase.models.RemoteOrganization
@@ -9,7 +8,6 @@ import com.andela.eduteam14.android_app.core.data.models.CreateAdminRequest
 import com.andela.eduteam14.android_app.core.data.models.CreateOrganizationRequest
 import com.andela.eduteam14.android_app.core.data.models.CreateSchoolRequest
 import com.andela.eduteam14.android_app.core.data.models.LocalDailyAttendance
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
@@ -71,6 +69,18 @@ class FireStoreManagerImpl(
     override fun findSchoolByName(name: String, onResult: (RemoteSchool) -> Unit) {
         fireStore.collection(REF_SCHOOLS)
             .whereEqualTo("SchoolName", name)
+            .get()
+            .addOnSuccessListener { docs ->
+                docs.forEach {
+                    val school = it.toObject<RemoteSchool>()
+                    onResult(school)
+                }
+            }
+    }
+
+    override fun findSchoolByAdminEmail(email: String, onResult: (RemoteSchool) -> Unit) {
+        fireStore.collection(REF_SCHOOLS)
+            .whereEqualTo("AdminEmail", email)
             .get()
             .addOnSuccessListener { docs ->
                 docs.forEach {

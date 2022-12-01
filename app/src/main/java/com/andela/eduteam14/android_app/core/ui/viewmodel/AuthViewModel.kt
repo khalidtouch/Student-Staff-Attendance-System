@@ -3,8 +3,6 @@ package com.andela.eduteam14.android_app.core.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.andela.eduteam14.android_app.core.data.mock.AttendanceDataSource
-import com.andela.eduteam14.android_app.core.data.mock.AttendanceRegistry
 import com.andela.eduteam14.android_app.core.data.models.CreateAdminRequest
 import com.andela.eduteam14.android_app.core.data.models.LoginAdminRequest
 import com.andela.eduteam14.android_app.core.data.repository.MainRepository
@@ -27,29 +25,20 @@ class AuthViewModel(
         }
     }
 
-    fun setEmail(email: String) {
-        this._createAdminRequest.AdminEmail = email
-    }
 
     fun setEmailForLogin(email: String) {
         this._loginAdminRequest.AdminEmail = email
     }
 
-    fun setPassword(password: String) {
-        this._createAdminRequest.Password = password
-    }
 
     fun setPasswordForLogin(password: String) {
         this._loginAdminRequest.Password = password
     }
 
-    fun setConfirmPassword(confirmPassword: String) {
-        this._createAdminRequest.ConfirmPassword = confirmPassword
-    }
 
     fun createAccount(onResult: (Boolean) -> Unit) {
         viewModelScope.launch {
-            repository.createAccount(_createAdminRequest, onResult)
+            repository.createAccount(_loginAdminRequest, onResult)
         }
     }
 
@@ -61,6 +50,10 @@ class AuthViewModel(
 
     fun logout() {
         viewModelScope.launch { repository.logout() }
+    }
+
+    fun setLoginAdminRequest(request: LoginAdminRequest) {
+        this._loginAdminRequest = request
     }
 }
 

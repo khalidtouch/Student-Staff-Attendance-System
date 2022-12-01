@@ -6,6 +6,8 @@ import androidx.core.content.edit
 
 const val USER_SESSION = "user_session"
 
+const val USER_ACCOUNT = "user_account"
+
 const val USER_SESSION_STATE = "user_session_state"
 
 const val KEY_STUDENT_MALE = "key_student_male"
@@ -15,6 +17,8 @@ const val KEY_STUDENT_FEMALE = "key_student_female"
 const val KEY_MALE_STAFF = "key_male_staff"
 
 const val KEY_FEMALE_STAFF = "key_female_staff"
+
+const val KEY_ORGANIZATION_TO_JOIN = "key_organization_to_join"
 
 class PreferenceRepository private constructor(context: Context) {
     private val pref =
@@ -34,6 +38,14 @@ class PreferenceRepository private constructor(context: Context) {
 
     fun stain() {
         pref.edit { putString(USER_SESSION_STATE, UserSessionState.DIRTY.state) }
+    }
+
+    fun saveUserAccount(type: String) {
+        pref.edit { putString(USER_ACCOUNT, type) }
+    }
+
+    fun retrieveUserAccount(): String {
+        return pref.getString(USER_ACCOUNT, "").toString()
     }
 
     fun saveTotalMaleStudents(number: Long) {
@@ -72,6 +84,14 @@ class PreferenceRepository private constructor(context: Context) {
 
     fun retrieveFemaleStaff(): Long {
         return pref.getLong(KEY_FEMALE_STAFF, 0L)
+    }
+
+    fun saveOrganizationToJoin(id: String) {
+        pref.edit { putString(KEY_ORGANIZATION_TO_JOIN, id) }
+    }
+
+    fun retrieveOrganizationToJoin(): String {
+        return pref.getString(KEY_ORGANIZATION_TO_JOIN, "").toString()
     }
 
 

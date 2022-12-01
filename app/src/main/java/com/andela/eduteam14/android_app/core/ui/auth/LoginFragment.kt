@@ -64,14 +64,10 @@ class LoginFragment : Fragment(), UiAction {
         initViews()
 
         registerInstead.onClick {
-            activity.let {
-                //start MobileNumberVerificationActivity
-                val intent = Intent(it, MobileNumberVerificationActivity::class.java)
-                startActivity(intent)
-            }
+            findNavController().navigate(
+                R.id.action_loginFragment_to_registerFragment
+            )
         }
-
-
 
         onLogin()
     }

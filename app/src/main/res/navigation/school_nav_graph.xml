@@ -80,4 +80,12 @@
             android:id="@+id/action_classInformationFragment_to_homeSchoolFragment"
             app:destination="@id/homeSchoolFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/joinOrganizationFragment"
+        android:name="com.andela.eduteam14.android_app.core.ui.joinorganization.JoinOrganizationFragment"
+        android:label="JoinOrganizationFragment" >
+        <action
+            android:id="@+id/action_joinOrganizationFragment_to_addSchoolFragment2"
+            app:destination="@id/addSchoolFragment2" />
+    </fragment>
 </navigation>

@@ -135,7 +135,7 @@
             android:layout_width="match_parent"
             android:id="@+id/RegisterFragmentConfirmPasswordLayoutEdit"
             android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
@@ -172,7 +172,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/RegisterFragmentGithubIcon"
+        app:layout_constraintBottom_toTopOf="@+id/RegisterFragmentPhoneIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
@@ -185,17 +185,17 @@
         android:padding="8dp"
         android:src="@drawable/google"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/RegisterFragmentGithubIcon"
+        app:layout_constraintEnd_toStartOf="@+id/RegisterFragmentPhoneIcon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <ImageView
-        android:id="@+id/RegisterFragmentGithubIcon"
+        android:id="@+id/RegisterFragmentPhoneIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="42dp"
         android:padding="8dp"
-        android:src="@drawable/github"
+        android:src="@drawable/ic_phone_auth"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/RegisterFragmentFacebookIcon"
         app:layout_constraintHorizontal_bias="0.5"
@@ -211,7 +211,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/RegisterFragmentGithubIcon" />
+        app:layout_constraintStart_toEndOf="@+id/RegisterFragmentPhoneIcon" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

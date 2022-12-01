@@ -2,6 +2,7 @@ package com.andela.eduteam14.android_app.core.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -9,6 +10,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.andela.eduteam14.android_app.MainApplication
 import com.andela.eduteam14.android_app.R
 import com.andela.eduteam14.android_app.core.di.CoreComponent
+import com.andela.eduteam14.android_app.core.ui.auth.GO_TO_ADD_ORGANIZATION
+import com.andela.eduteam14.android_app.core.ui.auth.GO_TO_ADD_SCHOOL
+import com.andela.eduteam14.android_app.core.ui.auth.KEY_GO_TO_ADD_ORGANIZATION
+import com.andela.eduteam14.android_app.core.ui.auth.KEY_GO_TO_ADD_SCHOOL
 import com.andela.eduteam14.android_app.databinding.ActivityBaseBinding
 import com.andela.eduteam14.android_app.databinding.ActivityOrganizationBaseBinding
 import com.google.android.material.appbar.MaterialToolbar
@@ -56,11 +61,29 @@ class OrganizationBaseActivity : AppCompatActivity(), UiAction {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "onStart: Called")
+
+        if(intent.getStringExtra(KEY_GO_TO_ADD_ORGANIZATION) == GO_TO_ADD_ORGANIZATION) {
+            jumpTo(R.id.organizationProfileFragment)
+        }
+    }
+
     override fun initViews() {
        navView = binding?.OrganizationBottomNav!!
     }
 
     override fun onDestroyComponents() {
 
+    }
+
+    private fun jumpTo(id: Int) {
+        navController.navigateUp()
+        navController.navigate(id)
+    }
+
+    companion object {
+        val TAG = "OrganizationBaseActivity"
     }
 }

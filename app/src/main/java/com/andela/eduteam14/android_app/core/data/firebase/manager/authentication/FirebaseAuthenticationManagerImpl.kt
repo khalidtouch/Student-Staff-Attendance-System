@@ -8,7 +8,7 @@ class FirebaseAuthenticationManagerImpl(
     private val authentication: FirebaseAuth,
 ) : FirebaseAuthenticationManager {
 
-    override fun createAccount(request: CreateAdminRequest, onResult: (Boolean) -> Unit) {
+    override fun createAccount(request: LoginAdminRequest, onResult: (Boolean) -> Unit) {
         authentication.createUserWithEmailAndPassword(
             request.AdminEmail, request.Password
         ).addOnCompleteListener {
@@ -26,6 +26,10 @@ class FirebaseAuthenticationManagerImpl(
 
     override fun logout() {
         authentication.signOut()
+    }
+
+    override fun adminId(onResult: (String) -> Unit) {
+        onResult(authentication.currentUser?.uid!!)
     }
 
     override fun activeAdminEmail(onResult: (String) -> Unit) {

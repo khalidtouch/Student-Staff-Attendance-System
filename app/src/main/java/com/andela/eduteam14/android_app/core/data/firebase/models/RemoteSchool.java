@@ -4,7 +4,7 @@ import com.andela.eduteam14.android_app.core.data.models.LocalSchool;
 
 public class RemoteSchool {
 
-    private String SchoolCode, OrganizationId, SchoolName, AdminName, Address, SchoolLocation, DateModified;
+    private String SchoolCode, OrganizationId, SchoolName, AdminEmail, Address, SchoolLocation, DateModified;
 
     public RemoteSchool() {
 
@@ -16,18 +16,18 @@ public class RemoteSchool {
         SchoolCode = schoolCode;
         OrganizationId = organizationId;
         SchoolName = schoolName;
-        AdminName = adminName;
+        AdminEmail = adminName;
         Address = address;
         SchoolLocation = schoolLocation;
         DateModified = dateModified;
     }
 
-    public String getAdminName() {
-        return AdminName;
+    public String getAdminEmail() {
+        return AdminEmail;
     }
 
-    public void setAdminName(String adminName) {
-        AdminName = adminName;
+    public void setAdminEmail(String adminEmail) {
+        AdminEmail = adminEmail;
     }
 
     public String getDateModified() {
@@ -84,7 +84,7 @@ public class RemoteSchool {
                 SchoolCode,
                 OrganizationId,
                 SchoolName,
-                AdminName,
+                AdminEmail,
                 Address,
                 SchoolLocation,
                 DateModified

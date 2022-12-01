@@ -33,29 +33,7 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_addOrganizationFragment"
-            app:destination="@id/addOrganizationFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_addSchoolFragment"
-            app:destination="@id/addSchoolFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/addOrganizationFragment"
-        android:name="com.andela.eduteam14.android_app.core.ui.addorganization.AddOrganizationFragment"
-        android:label="AddOrganizationFragment" />
-    <fragment
-        android:id="@+id/addSchoolFragment"
-        android:name="com.andela.eduteam14.android_app.core.ui.addschool.AddSchoolFragment"
-        android:label="AddSchoolFragment" >
-        <action
-            android:id="@+id/action_addSchoolFragment_to_joinOrganizationFragment"
-            app:destination="@id/joinOrganizationFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/joinOrganizationFragment"
-        android:name="com.andela.eduteam14.android_app.core.ui.joinorganization.JoinOrganizationFragment"
-        android:label="JoinOrganizationFragment" />
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.andela.eduteam14.android_app.core.ui.onboarding.screens.OnBoardingFragment"

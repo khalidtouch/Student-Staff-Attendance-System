@@ -26,6 +26,8 @@ interface FireStoreManager {
 
     fun findSchoolByName(name: String, onResult: (RemoteSchool) -> Unit)
 
+    fun findSchoolByAdminEmail(name: String, onResult: (RemoteSchool) -> Unit)
+
     fun findAllSchools(onResult: (Query) -> Unit)
 
     fun findOrganizationByName(name: String, onResult: (RemoteOrganization) -> Unit)

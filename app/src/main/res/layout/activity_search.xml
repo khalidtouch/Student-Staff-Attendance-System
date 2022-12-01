@@ -6,10 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".core.ui.search.SearchActivity">
 
-    <TextView
+    <SearchView
+        android:id="@+id/OrganizationSearchView"
+        style="@style/Widget.AppCompat.Light.SearchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="@string/search_organization" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/HistorySchoolRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Search Activity"
-        android:textSize="72sp"/>
+        android:paddingTop="16dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

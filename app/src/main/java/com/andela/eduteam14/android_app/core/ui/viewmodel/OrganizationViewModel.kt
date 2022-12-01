@@ -42,7 +42,6 @@ class OrganizationViewModel(
 
     fun activeAdminEmail(onResult: (String) -> Unit) {
         viewModelScope.launch { repository.activeAdminEmail(onResult) }
-
     }
 }
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import com.andela.eduteam14.android_app.core.ui.OrganizationBaseActivity
 import com.andela.eduteam14.android_app.core.ui.SchoolBaseActivity
 import com.andela.eduteam14.android_app.core.ui.UiAction
 import com.andela.eduteam14.android_app.core.ui.auth.AuthActivity
@@ -41,9 +42,9 @@ class JoinOrganizationFragment : Fragment(), UiAction {
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
-        searchBar.onClick { (activity as AuthActivity).goto(SearchActivity::class.java) }
+        searchBar.onClick { (activity as SchoolBaseActivity).goto(SearchActivity::class.java) }
 
-        join.onClick { (activity as AuthActivity).goto(SchoolBaseActivity::class.java) }
+        join.onClick { (activity as SchoolBaseActivity).goto(SchoolBaseActivity::class.java) }
     }
 
     override fun initViews() {

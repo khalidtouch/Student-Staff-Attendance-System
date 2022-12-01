@@ -13,11 +13,13 @@ import com.google.firebase.firestore.Query
 
 interface MainRepository {
 
-    fun createAccount(request: CreateAdminRequest, onResult: (Boolean) -> Unit) //
+    fun createAccount(request: LoginAdminRequest, onResult: (Boolean) -> Unit) //
 
     fun login(request: LoginAdminRequest, onResult: (Boolean) -> Unit) //
 
     fun logout() //
+
+    fun adminId(onResult: (String) -> Unit)
 
     fun activeAdminEmail(onResult: (String) -> Unit)
 
@@ -34,6 +36,8 @@ interface MainRepository {
     fun findSchoolById(id: String, onResult: (RemoteSchool) -> Unit)
 
     fun findSchoolByName(name: String, onResult: (RemoteSchool) -> Unit)
+
+    fun findSchoolByAdminEmail(email: String, onResult: (RemoteSchool) -> Unit)
 
     fun findAllSchools(onResult: (Query) -> Unit)
 
